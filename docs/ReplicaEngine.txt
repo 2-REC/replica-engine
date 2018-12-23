@@ -1,0 +1,44 @@
+(!!!! TODO: CHANGE TO WORD/DOC FILE !!!!)
+
+OVERVIEW
+(List of chapters)
+
+INTRODUCTION
+(=> Application overview and utility)
+
+In order to learn how its components based game engine was working, and to make it more generic, I decided to modify the Replica Island's source code. This would hopefully make it easier to create new games using the engine by having less code to write or modify, as well as provide new functionalities.
+
+Many changes have been made to the original source code, but only to make it more generic and to add new functionalities. Its core has not been modified nor optimised.
+It is an unfinished work, so some parts should be rewritten and optimised, and some bugs should be fixed. It thus serves more as a showcase of things that can be done, instead of how they should be done.
+Additionally, some functionalities have been removed or are not working anymore. (!! Provide List !!)
+
+
+NEW/ENHANCED FUNCTIONALITIES
+...
+- top/side stuff (climber, etc.)
+- controllers (swappables):
+  - vehicles
+  - climber
+  - swimmer
+  - bonus
+  - ...
+- followers
+  - camera
+  - player
+  - between
+- continues (when game over)
+- moving platforms
+- level selection / map
+- force (?)
+- level results
+- game results
+(- launch chain)
+- swingers (+fixed): pendulum, ...
+- animations (different types and configs) (+win and lose)
+- sounds/images/musics: config files
+- dialogs (if working!?)
+- level files structure (layers, moving speeds, format, ...)
+- preferences (with fragments)
+- HUD new structure
+- Inputs (ouya...)
+- 
