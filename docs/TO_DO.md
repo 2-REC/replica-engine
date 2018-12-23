@@ -127,3 +127,29 @@ Adapted levels:
 
 
 - create new resources
+
+====================
+
+MAP EDITOR:
+
+Tiled:
+=> Download & install, & check for Replica's plugin (how to use and adapt => make my plugin? LATER!!)
+https://thorbjorn.itch.io/tiled
+https://www.mapeditor.org
+
+Source: (same?)
+https://github.com/Emudofus/MapEditor
+
+!!!!
+SEND EMAILS TO CREATORS OF REPLICA AND TILED TO TELL THEM ABOUT MY PROJECTS AND ASK THEM ABOUT LICENSE STUFF
+- Replica:
+  PRESS CONTACT: Nicholai Lamberstat press@replicaisland.net 
+    (Ask about who to contact and what to do)
+  And look at
+    https://groups.google.com/d/topic/replica-island-coding-community
+    https://code.google.com/archive/p/replicaisland/wikis
+
+(later)
+- Tiled: Thorbjorn
+  https://thorbjorn.itch.io
+!!!!
