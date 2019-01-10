@@ -1148,6 +1148,15 @@ DebugLog.e("LEVEL", "posY : " + posY);
             float bmWidth = mainLayer.getWidth();
             float bmHeight = mainLayer.getHeight();
 
+//////// - 20190110 - INFINITY_SCALE - MID
+/*
+!!!!  TODO: Fix properly !!!!
+Horrible hack to avoid crash due to "mainLayer.getWidth()" or "mainLayer.getHeight()" equal to 0.
+(was ~ok until SDK 27, but with 28 it crashes)
+*/
+            if ((bmWidth != 0.0) && (bmHeight != 0.0)) {
+//////// - 20190110 - INFINITY_SCALE - END
+
             float fitToWindow = Math.min(winWidth / bmWidth, winHeight / bmHeight);
             float mainXOffset = (winWidth - (bmWidth * fitToWindow)) * 0.5f * currentZoom;
             float mainYOffset = (winHeight - (bmHeight * fitToWindow)) * 0.5f * currentZoom;
@@ -1164,6 +1173,12 @@ DebugLog.e("LEVEL", "posY : " + posY);
             mainLayer.setTranslationX(mainXOffset);
             mainLayer.setTranslationY(mainYOffset);
 
+//////// - 20190110 - INFINITY_SCALE - MID
+            }
+            else {
+                DebugLog.e("LEVEL", "onPanZoomChanged - mainLayer size is 0.0 ");
+            }
+//////// - 20190110 - INFINITY_SCALE - END
 
             final int nbLayers = layers.getCount();
             for (int i=0; i<nbLayers; ++i) {
@@ -1175,7 +1190,15 @@ DebugLog.e("LEVEL", "posY : " + posY);
                     bmWidth = layer.getWidth();
                     bmHeight = layer.getHeight();
 
-                    fitToWindow = Math.min(winWidth / bmWidth, winHeight / bmHeight);
+//////// - 20190110 - INFINITY_SCALE - MID
+                    if ((bmWidth != 0.0) && (bmHeight != 0.0)) {
+//////// - 20190110 - INFINITY_SCALE - END
+
+//////// - 20190110 - INFINITY_SCALE - BEGIN
+//                    fitToWindow = Math.min(winWidth / bmWidth, winHeight / bmHeight);
+//////// - 20190110 - INFINITY_SCALE - MID
+                    float fitToWindow = Math.min(winWidth / bmWidth, winHeight / bmHeight);
+//////// - 20190110 - INFINITY_SCALE - END
                     float xOffset = (winWidth - (bmWidth * fitToWindow)) * 0.5f * zoom;
                     float yOffset = (winHeight - (bmHeight * fitToWindow)) * 0.5f * zoom;
 
@@ -1183,6 +1206,13 @@ DebugLog.e("LEVEL", "posY : " + posY);
                     layer.setScaleY(zoom * fitToWindow);
                     layer.setTranslationX((currentPan.x * zoomFactor) + xOffset);
                     layer.setTranslationY((currentPan.y * zoomFactor) + yOffset);
+
+//////// - 20190110 - INFINITY_SCALE - MID
+                    }
+                    else {
+                        DebugLog.e("LEVEL", "onPanZoomChanged - layer " + i + " size is 0.0 ");
+                    }
+//////// - 20190110 - INFINITY_SCALE - END
                 }
             }
 
