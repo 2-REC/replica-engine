@@ -258,11 +258,12 @@ public class PatrolComponentTop extends GameComponent {
             boolean timeToAttack = (gameTime - mLastAttackTime) > mAttackDelay;
             if (mAttackAtDistance > 0 && player != null && player.life > 0 && timeToAttack) {
                 // only attack if we are facing the player
-                if (Utils.sign(player.getPosition().x - parentObject.getPosition().x) == Utils.sign(parentObject.facingDirection.x)) {
-                    mWorkingVector.set(parentObject.getPosition());
+                if ((Utils.sign(player.getPosition().x - parentObject.getPosition().x) == Utils.sign(parentObject.facingDirection.x))
+                    || (Utils.sign(player.getPosition().y - parentObject.getPosition().y) == Utils.sign(parentObject.facingDirection.y))) {
                     mWorkingVector.x = parentObject.getCenteredPositionX();
-                    mWorkingVector2.set(player.getPosition());
+                    mWorkingVector.y = parentObject.getCenteredPositionY();
                     mWorkingVector2.x = player.getCenteredPositionX();
+                    mWorkingVector2.y = player.getCenteredPositionY();
                     if (mWorkingVector2.distance2(mWorkingVector) < (mAttackAtDistance * mAttackAtDistance)) {
                         closeEnough = true;
                     }
