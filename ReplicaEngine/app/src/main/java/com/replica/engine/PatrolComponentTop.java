@@ -49,11 +49,11 @@ public class PatrolComponentTop extends GameComponent {
     private float mAttackDelay;
     private boolean mTurnToFacePlayer;
 
-    private mRandom;
-    private mRandomDelay;
-    private mRandomTimer;
-    private mPauseDelay;
-    private mPauseTimer;
+    private boolean mRandom;
+    private float mRandomDelay;
+    private float mRandomTimer;
+    private float mPauseDelay;
+    private float mPauseTimer;
 
     private float mLastAttackTime;
     Vector2 mWorkingVector;
@@ -396,7 +396,7 @@ public class PatrolComponentTop extends GameComponent {
         mRandom = true;
         mRandomDelay = randomDelay;
         mRandomTimer = 0.0f;
-        mPauseDelay = pauseTimer;
+        mPauseDelay = pauseDelay;
         mPauseTimer = pauseDelay;
 
     }
