@@ -20,9 +20,14 @@ import com.replica.engine.GameObject.ActionType;
 import com.replica.engine.HotSpotSystem.HotSpotType;
 
 /**
- * This component implements the "patrolling" behavior for AI characters.  Patrolling characters
- * will walk forward on the map until they hit a direction hot spot or a wall, in which case they
- * may change direction.  Patrollers can also be configured via this component to attack the player
+ * This component implements the "patrolling" behavior for AI characters.
+ * If "random" is not set:
+ * Patrolling characters will walk forward on the map until they hit a direction hot spot or a wall,
+ * in which case they may change direction.
+ * Alternately, if "random" is set:
+ * Patrolling characters will walk forward on the map until the timer expires,
+ * in which case they may change direction (after pausing until another timer expires).
+ * Patrollers can also be configured via this component to attack the player
  * if appropriate conditions are met.
  */
 public class PatrolComponentTop extends GameComponent {
@@ -43,6 +48,12 @@ public class PatrolComponentTop extends GameComponent {
     private float mAttackDuration;
     private float mAttackDelay;
     private boolean mTurnToFacePlayer;
+
+    private mRandom;
+    private mRandomDelay;
+    private mRandomTimer;
+    private mPauseDelay;
+    private mPauseTimer;
 
     private float mLastAttackTime;
     Vector2 mWorkingVector;
@@ -72,6 +83,12 @@ public class PatrolComponentTop extends GameComponent {
 
         mAccelerationX = 0.0f;
         mAccelerationY = 0.0f;
+
+        mRandom = false;
+        mRandomDelay = 0.0f;
+        mRandomTimer = 0.0f;
+        mPauseDelay = 0.0f;
+        mPauseTimer = 0.0f;
 
         mAttack = false;
         mAttackAtDistance = 0.0f;
@@ -107,33 +124,67 @@ public class PatrolComponentTop extends GameComponent {
 
         if (parentObject.getCurrentAction() == GameObject.ActionType.MOVE
             && (mMaxSpeedX != 0.0f || mMaxSpeedY != 0.0f) ) {
-            int hotSpot = HotSpotSystem.HotSpotType.NONE;
-            HotSpotSystem hotSpotSystem = sSystemRegistry.hotSpotSystem;
-            if (hotSpotSystem != null) {
-                // TODO: ack, magic number
-//                hotSpot = hotSpotSystem.getHotSpot(parentObject.getCenteredPositionX(),
-//                    parentObject.getPosition().y + 10.0f);
-                hotSpot = hotSpotSystem.getHotSpot(parentObject.getCenteredPositionX(),
-                    parentObject.getCenteredPositionY());
+            boolean goLeft = false;
+            boolean goRight = false;
+            boolean goUp = false;
+            boolean goDown = false;
+            boolean pauseX = (mMaxSpeedX == 0.0f);
+            boolean pauseY = (mMaxSpeedY == 0.0f);
+
+            if (mRandom) {
+                if (mRandomTimer > 0.0f) {
+                    mRandomTimer -= timeDelta;
+                    if (mRandomTimer <= 0.0f) {
+                        mPauseTimer = mPauseDelay;
+                        mRandomTimer = 0.0f;
+                        pauseX = true;
+                        pauseY = true;
+                    }
+                } else {
+                    mPauseTimer -= timeDelta;
+                    if (mPauseTimer <= 0.0f) {
+                        float random = (float)Math.random();
+                        if (random < 0.25f) {
+                            goLeft = true;
+                        } else if ((random >= 0.25f) && (random < 0.5f)) {
+                            goRight = true;
+                        } else if ((random >= 0.5f) && (random < 0.75f)) {
+                            goUp = true;
+                        } else {
+                            goDown = true;
+                        }
+                        mPauseTimer = 0.0f;
+                        mRandomTimer = mRandomDelay;
+                    } else {
+                        pauseX = true;
+                        pauseY = true;
+                    }
+                }
+            } else {
+                int hotSpot = HotSpotSystem.HotSpotType.NONE;
+                HotSpotSystem hotSpotSystem = sSystemRegistry.hotSpotSystem;
+                if (hotSpotSystem != null) {
+                    // TODO: ack, magic number
+//                    hotSpot = hotSpotSystem.getHotSpot(parentObject.getCenteredPositionX(),
+//                        parentObject.getPosition().y + 10.0f);
+                    hotSpot = hotSpotSystem.getHotSpot(parentObject.getCenteredPositionX(),
+                        parentObject.getCenteredPositionY());
+                }
+
+                goLeft = (parentObject.touchingRightWall() || (hotSpot == HotSpotType.GO_LEFT));
+                goRight = (parentObject.touchingLeftWall() || (hotSpot == HotSpotType.GO_RIGHT));
+
+                goUp = (parentObject.touchingGround() || (hotSpot == HotSpotType.GO_UP));
+                goDown = (parentObject.touchingCeiling() || (hotSpot == HotSpotType.GO_DOWN));
             }
+
             final float targetVelocityX = parentObject.getTargetVelocity().x;
             final float targetVelocityY = parentObject.getTargetVelocity().y;
 
-            boolean goLeft = (parentObject.touchingRightWall() || (hotSpot == HotSpotType.GO_LEFT))
-                              && targetVelocityX >= 0.0f;
-
-            boolean goRight = (parentObject.touchingLeftWall() || (hotSpot == HotSpotType.GO_RIGHT))
-                               && targetVelocityX <= 0.0f;
-
-            boolean pauseX = (mMaxSpeedX == 0.0f);
-
-            boolean goUp = (parentObject.touchingGround() || (hotSpot == HotSpotType.GO_UP))
-                            && targetVelocityY <= 0.0f;
-
-            boolean goDown = (parentObject.touchingCeiling() || (hotSpot == HotSpotType.GO_DOWN))
-                              && targetVelocityY >= 0.0f;
-
-            boolean pauseY = (mMaxSpeedY == 0.0f);
+            goLeft = goLeft && (targetVelocityX >= 0.0f);
+            goRight = goRight && (targetVelocityX <= 0.0f);
+            goUp = goUp && (targetVelocityY <= 0.0f);
+            goDown = goDown && (targetVelocityY >= 0.0f);
 
             if (mTurnToFacePlayer && player != null && player.life > 0) {
                 final float deltaX = player.getCenteredPositionX() - parentObject.getCenteredPositionX();
@@ -338,4 +389,16 @@ public class PatrolComponentTop extends GameComponent {
     public void setTurnToFacePlayer(boolean turn) {
         mTurnToFacePlayer = turn;
     }
+
+    public void setRandom(float randomDelay, float pauseDelay) {
+        assert randomDelay > 0;
+
+        mRandom = true;
+        mRandomDelay = randomDelay;
+        mRandomTimer = 0.0f;
+        mPauseDelay = pauseTimer;
+        mPauseTimer = pauseDelay;
+
+    }
+
 }
