@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  end:
+  Specifies animations resources to play after finishing the game (after the end game results screen).
+  (e.g.: ideal for credits)
+  This file is optional.
+
+    - animation (O) (0+) :
+      Animation played when finishing the game (played in order of appearance).
+      - filename (M) : XML animation file in "xml" directory
+
+
+    Example:
+
+    <end>
+      <animations>
+        <animation filename="anim_end_1" />
+        <animation filename="anim_end_2" />
+        <animation filename="anim_end_3" />
+      </animations>
+    </end>
+
+-->

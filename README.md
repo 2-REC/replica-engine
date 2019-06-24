@@ -1,5 +1,7 @@
-# replica-engine
-Modified Replica Island code to make more generic (and reduce required code changes when creating a new game).
+# REPLICA ENGINE
+
+Modified Replica Island code to make more generic (and reduce required code changes when creating a new game).<br>
+
 
 !!!! TODO: provide more information, mainly the differences with the original code/game !!!!
 

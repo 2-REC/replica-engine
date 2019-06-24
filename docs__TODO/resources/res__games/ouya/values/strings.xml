@@ -1,0 +1,10 @@
+<resources>
+
+	<!-- Preferences -->
+    <string name="preference_controls_default">default button</string>
+    <string name="preference_controls_unfinished">Some buttons have not been assigned!</string>
+<!-- !!!! TODO !!!!  -->
+    <string name="preference_controls_jump">JUMP</string>
+    <string name="preference_controls_attack">ATTACK</string>
+
+</resources>

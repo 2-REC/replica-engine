@@ -1,0 +1,101 @@
+<resources>
+    <!-- Implemented classes names -->
+    <!-- !!!! ONLY MODIFY IF CHANGING CLASSES NAMES !!!! -->
+    <string name="package_name">com.replica.game</string>
+    <string name="class_name_main_menu">MainMenuActivityImplSpecific</string>
+    <string name="class_name_settings">SetPreferencesActivityImpl</string>
+    <string name="class_name_main">MainImpl</string>
+    <string name="class_name_game_over">ResultsGameOverActivityImpl</string>
+<!-- //////// lev res - m -->
+    <string name="class_name_level_results">ResultsLevelActivityImpl</string>
+<!-- //////// lev res - e -->
+
+
+    <!-- ADAPT THE FOLLOWING ENTRIES -->
+
+    <!-- Game name -->
+    <string name="app_name">Game</string>
+    <string name="app_version">-1</string>
+
+    <!-- Main menu -->
+    <string name="main_menu_title">main menu title</string>
+    <string name="start_button">start button</string>
+    <string name="continue_button">continue button</string>
+    <string name="settings_button">settings button</string>
+<!--
+    <string name="extras_button">extras button</string>
+-->
+
+    <!-- Difficulty menu -->
+    <string name="diff_easy_description">Easy</string>
+    <string name="diff_normal_description">Normal</string>
+    <string name="diff_hard_description">Hard</string>
+
+    <!-- Map screen -->
+    <string name="map_level_enabled">level</string>
+    <string name="map_level_selected">selected level</string>
+    <string name="map_level_completed">completed level</string>
+    <string name="map_level_disabled">disabled level</string>
+
+    <!-- Dialog boxes -->
+    <string name="wait_message">Please wait</string>
+
+    <!-- Game ending -->
+    <string name="endgame_won_title">CONGRATULATIONS!</string>
+    <string name="endgame_won_text">You\'ve won the game</string>
+    <string name="endgame_lost_title">GAME OVER!</string>
+    <string name="endgame_lost_text">Here\'s what you\'ve done so far:</string>
+
+	<!-- Preferences -->
+    <string name="preference_general">GENERAL</string>
+    <string name="preference_general_summary">general summary</string>
+    <string name="preference_audio">AUDIO</string>
+    <string name="preference_audio_summary">audio summary</string>
+    <string name="preference_controls">CONTROLS</string>
+    <string name="preference_controls_summary">controls summary</string>
+
+    <string name="preference_erase">Erase Saved Game</string>
+    <string name="preference_erase_dialog">Progress will be lost!</string>
+    <string name="preference_erase_dialog_title">Are you sure ?</string>
+    <string name="preference_erase_dialog_ok">YES</string>
+    <string name="preference_erase_dialog_cancel">NO</string>
+    <string name="preference_erase_notification">Saved Game Erased</string>
+
+    <string name="preference_audio_disable">Disable Audio</string>
+    <string name="preference_audio_disable_summary">no sound</string>
+    <string name="preference_sound_volume">Sound FX Volume</string>
+    <string name="preference_sound_volume_summary">Adjusts the sound FX volume.</string>
+    <string name="preference_sound_volume_min">Silent</string>
+    <string name="preference_sound_volume_max">Loud</string>
+    <string name="preference_music_volume">Music Volume</string>
+    <string name="preference_music_volume_summary">Adjusts the music volume.</string>
+    <string name="preference_music_volume_min">Silent</string>
+    <string name="preference_music_volume_max">Loud</string>
+
+    <string name="preference_movement_sensitivity">Motion Sensitivity</string>
+    <string name="preference_movement_sensitivity_summary">Adjusts the sensitivity of movement.</string>
+    <string name="preference_movement_min">Slow</string>
+    <string name="preference_movement_max">Fast</string>
+
+
+
+<!-- GAME RELATED -->
+
+  <!-- Levels -->
+  <string name="level_default_description">default level</string>
+  <string name="level_1">LEVEL 1</string>
+  <string name="level_1_number">00:00:00</string>
+  <string name="level_1_description">This is the first level</string>
+  <string name="level_2">LEVEL 2</string>
+  <string name="level_2_number">01:00:00</string>
+  <string name="level_2_description">After beating level 1, a new story began</string>
+
+  <!-- Results -->
+  <string name="results_coins_collected">Coins Collected:</string>
+  <string name="results_coins_collected_total">Total Coins Collected:</string>
+
+  <!-- Dialogs -->
+  <string name="hero">Hero</string>
+  <string name="kyle">Kyle</string>
+
+</resources>

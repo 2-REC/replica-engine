@@ -1,0 +1,33 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:replica="http://schemas.android.com/apk/res-auto"
+    >
+
+    <!-- TODO: most of these settings should be in "engineOuya" instead of "gameOuya" -->
+
+    <PreferenceCategory
+        android:title="@string/preference_controls"
+        >
+
+        <com.replica.engine.SliderPreference
+            android:key="movementSensitivity"
+            android:defaultValue="100"
+            android:title="@string/preference_movement_sensitivity"
+            android:summary="@string/preference_movement_sensitivity_summary"
+            replica:maxText="@string/preference_movement_max"
+            replica:minText="@string/preference_movement_min"
+            android:persistent="true"
+        />
+
+<!-- CONTROLS: BEGIN -->
+        <PreferenceScreen
+            android:key="controlsActivity"
+            android:title="@string/preference_controls"
+            android:summary="@string/preference_controls_summary">
+            <intent android:action="com.replica.engine.ControlsActivity"/>
+        </PreferenceScreen>
+<!-- CONTROLS: END -->
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

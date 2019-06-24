@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    >
+    <TextView
+        android:id="@+id/title"
+        android:text="Controls configuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.1"
+    />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.7"
+        >
+<!--
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal"
+-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_weight="0.4"
+            android:background="#aa990000"
+            >
+            <ImageView
+                android:id="@+id/padFront"
+                android:contentDescription="@null"
+                android:src="@drawable/pad_front"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.5"
+            />
+            <ImageView
+                android:id="@+id/padTop"
+                android:contentDescription="@null"
+                android:src="@drawable/pad_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.5"
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_weight="0.6"
+            android:background="#aa000099"
+            >
+<!--
+                android:choiceMode="singleChoice" 
+                android:listSelector="@android:color/darker_gray"
+-->
+<!--
+            <ListView android:id="@+id/android:list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:dividerHeight = "0dp"
+                android:footerDividersEnabled = "false"
+                android:headerDividersEnabled = "false"
+            />
+                android:layout_weight="1"
+-->
+            <fragment
+                class="com.replica.engine.ControlsActivity$ButtonsPreferenceFragment"
+                android:id="@+id/buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            />
+<!--
+android:layout_gravity="center_horizontal"
+-->
+            <ImageButton
+                android:id="@+id/defaultButton"
+                android:contentDescription="@string/preference_controls_default"
+                android:src="@drawable/preferences_button_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@null"
+                android:clickable="true"
+                android:layout_gravity="bottom|right"
+            />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/press"
+        android:text="Press A button to go back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.2"
+    />
+</LinearLayout>

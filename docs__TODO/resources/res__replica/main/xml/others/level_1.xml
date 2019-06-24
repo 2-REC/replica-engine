@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<level>
+
+<!--
+ Default values :
+  <background
+    resource=""       => need to specify !
+    sizeFactorX="1.0" => must be >= 1.0
+    sizeFactorY="1.0" => must be >= 1.0
+    width="512"       => if both specified, one of the size factors will not be considered, depending on "ratio"
+    height="512"
+    ratio="width"     => must be "width" or "height" ( default : "width" )
+  />
+  -->
+
+  <background
+    resource="@drawable/background_sewage"
+    sizeFactorX="1.0"
+    sizeFactorY="2.0"
+    width="512"
+    height="512"
+    ratio="width"
+  />
+
+  <layerMain
+    tilesheet="@drawable/test_tilemap"
+    tileWidth="32"
+    tileHeight="32"
+    resource="@raw/test_layer_bkg_1"
+    collisionResource="@raw/test_layer_collision_0"
+    objectsResource="@raw/test_layer_objects_0"
+    hotspotsResource="@raw/test_layer_hotspots_0"
+  />
+
+<!--
+ Default values :
+  <layer
+    tilesheet="@drawable/tilesheet"
+    tileWidth="32"
+    tileHeight="32"
+    resource="@raw/layer"
+    foreground="false"
+    sizeFactorX="1.0" => must be > 0.0
+    sizeFactorY="1.0" => must be > 0.0
+    movingSpeedX="0.0"
+    movingSpeedY="0.0"
+  />
+  -->
+
+  <layer
+    tilesheet="@drawable/test_tilemap"
+    tileWidth="32"
+    tileHeight="32"
+    resource="@raw/test_layer_bkg_0"
+  />
+
+<!--
+  <layer
+    tilesheet="@drawable/test_tilemap"
+    tileWidth="32"
+    tileHeight="32"
+    resource="@raw/test_layer_move_0"
+    foreground="true"
+	movingSpeedX="10.0"
+  />
+  -->
+
+  <layer
+    tilesheet="@drawable/test_tilemap"
+    tileWidth="32"
+    tileHeight="32"
+    resource="@raw/test_layer_fore_0"
+    foreground="true"
+  />
+
+  <dialogs
+    resource="@xml/dialogs_1"
+  />
+
+</level>

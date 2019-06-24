@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ouya buttons -->
+<buttons>
+<!--
+    <button key="buttonJump" default="96" name="@string/preference_controls_jump" />
+    <button key="buttonAttack" default="99" name="@string/preference_controls_attack" />
+-->
+</buttons>

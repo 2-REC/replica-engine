@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation
+    type="0"
+    music="@raw/music_end_game"
+    anim="@anim/death"
+/>

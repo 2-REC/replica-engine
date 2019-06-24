@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation
+    type="1"
+    music="@raw/music_end_game"
+    >
+    <layer
+        drawable="@drawable/anim_bad_ending_rokudou_bg"
+        width="480"
+        height="500"
+        ratio="width"
+    />
+    <layer
+        drawable="@drawable/anim_bad_ending_rokudou_sphere"
+        sizeFactorX="1.0"
+        sizeFactorY="1.0"
+        width="480"
+        height="500"
+        ratio="width"
+        anim="@anim/rokudou_slide_sphere"
+    />
+    <layer
+        drawable="@drawable/anim_bad_ending_rokudou_rokudou"
+        sizeFactorX="1.0"
+        sizeFactorY="0.5"
+        width="480"
+        height="600"
+        ratio="width"
+        anim="@anim/rokudou_slide_rokudou"
+    />
+</animation>

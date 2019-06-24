@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView
+        android:id="@+id/image"
+        android:src="@drawable/map_level_enabled"
+        android:contentDescription="@string/map_level_enabled"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:gravity="center"
+        android:scaleType="fitXY"
+    />
+</RelativeLayout>

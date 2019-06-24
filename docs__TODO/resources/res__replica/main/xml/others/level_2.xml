@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<level>
+
+    <background
+        resource="@drawable/background_sewage"
+        sizeFactorX="1.5"
+        sizeFactorY="1.5"
+    />
+
+    <layerMain
+        tilesheet="@drawable/test_tilemap"
+        tileWidth="32"
+        tileHeight="32"
+        resource="@raw/test_layer_collision_0"
+        collisionResource="@raw/test_layer_collision_0"
+        objectsResource="@raw/test_layer_objects_1"
+        hotspotsResource="@raw/test_layer_hotspots_0"
+    />
+
+<!--
+    <layer
+        tilesheet="@drawable/tilesheet_1"
+        tileWidth="32"
+        tileHeight="32"
+        resource="@raw/layer_1"
+    />
+  -->
+
+<!--
+    <layer
+        tilesheet="@drawable/tilesheet_2"
+        tileWidth="32"
+        tileHeight="32"
+        resource="@raw/layer_2"
+        foreground="true"
+        movingSpeedX="0.0"
+        movingSpeedY="0.0"
+    />
+  -->
+
+</level>

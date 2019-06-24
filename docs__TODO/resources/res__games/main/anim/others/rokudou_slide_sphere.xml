@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  offset in parent layout relative to size of view :
+    offset = ( offset_in_parent ) - ( size / 2 )
+	! caution if keep ratio, values are wrong ... !
+  -->
+
+<set
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:shareInterpolator="false"
+  android:fillAfter="true"
+  android:fillEnabled="true"
+  android:startOffset="2000"
+  >
+
+  <translate
+    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+    android:fromXDelta="0%p"
+    android:toXDelta="0%p"
+    android:fromYDelta="-100%p"
+    android:toYDelta="0.0%p"
+    android:duration="6000"
+    android:startOffset="2000"
+  />
+
+<!--
+  <rotate
+    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+    android:fromDegrees="-90"
+    android:toDegrees="0"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:duration="4000"
+  />
+  -->
+
+</set>

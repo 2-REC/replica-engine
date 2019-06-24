@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<levelTree>
+<!-- Levels -->
+<!-- !!!! TODO: check what happens when empty !!!! -->
+
+    <group>
+        <level
+            intro="@xml/anim_movingimages_1"
+            resource="@xml/level_1"
+            music="@raw/music_game"
+            title="@string/level_1"
+            number="@string/level_1_number"
+            skippable="true"
+            selectable="1"
+        />
+    </group>
+    <group>
+        <level
+            resource="@xml/level_2"
+            music="@raw/music_game2"
+            title="@string/level_2"
+            number="@string/level_2_number"
+            resultScreen="@anim/map_background"
+            restartable="false"
+            skippable="false"
+            selectable="-2"
+        />
+    </group>
+
+<!--
+    <group>
+        <level resource="@xml/level_2_test" title="@string/level_2" number="@string/level_2_number" selectable="true"/>
+        <level resource="@xml/level_1_test" title="@string/level_1" number="@string/level_2_number" selectable="true"/>
+    </group>
+-->
+<!--
+    <group>
+        <level resource="@xml/level_2_test" title="@string/level_1" number="@string/level_1_number" waitmessage="true"/>
+    </group>
+-->
+</levelTree>
