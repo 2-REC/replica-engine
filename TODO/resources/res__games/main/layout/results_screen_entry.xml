@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+<!--
+    android:text="@string/results_coins"
+-->
+    <TextView
+        android:id="@+id/text_view"
+        android:text=""
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:typeface="serif"
+    />
+    <view
+        class = "com.replica.engine.ResultsActivity$IncrementingTextView"
+        android:id ="@+id/inc_text_view"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textSize="20sp"
+        android:layout_gravity="right|center_vertical"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:gravity="right"
+     />
+</LinearLayout>

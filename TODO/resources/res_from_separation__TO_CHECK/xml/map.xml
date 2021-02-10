@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  map:
+  Data specifying the level selection map.
+
+   - background (M) (1) :
+     Background image that uses the whole screen & not impacted by pan & zoom.
+     Associated to "mapBackground" in "layout/map.xml".
+     - resource (M) : drawable resource (image)
+
+   - layerMain (M) (1) :
+     Main layer of the map.
+     Associated to "mapMainLayer" in "layout/map.xml".
+     - resource                                 (M) : drawable resource (image or animation)
+     - levelWidth / levelHeight                 (C) : width/height of a level on map (percentage) (float 0.0 - 1.0)
+     - selectedLevelWidth / selectedLevelHeight (C) : width/height of the selected level on map (float 0.0 - 1.0)
+     - zoomInit                                 (O) : initial zoom (float, minimum "zoomMin") (default: "zoomMin")
+     - zoomMin                                  (O) : minimum allowed zoom (float, minimum 1.0) (default: 1.0)
+     - zoomMax                                  (O) : maximum allowed zoom (float, minimum "zoomInit") (default: "zoomInit")
+
+   - layer (O) (0+) :
+     Additional layer.
+     Associated to an instance of "layer" from "layout/map_layer.xml".
+     - resource   (M) : drawable resource (image)
+     - zoomFactor (O) : zoom speed (float) (default: 1.0)
+     - foreground (O) : in front of main layer (boolean) (default: true)
+     - fitScreen  (O) : "fit screen" or "fit image in screen" (keeping ratio) (boolean) (default: false)
+     - alpha      (O) : transparency (float 0.0 - 1.0) (default 1.0)
+
+   - levelDefault (M) (1) :
+     Level default data (when no corresponding entry for a selectable level).
+     Images resources are dynamically associated to "levelLayout" in "layout/map.xml".
+     ('id' not present but considered as '0')
+     - background   (M) : drawable resource (image)
+     - foreground   (M) : drawable resource (image)
+     - description  (O) : default description (string reference in "strings.xml")
+
+   - level (O - but should have one per selectable level) (0+) :
+     Level specific data.
+     Images resources are dynamically associated to "levelLayout" in "layout/map.xml".
+     - id           (M) : id of the level, used to link with entry in "level_tree.xml" (integer)
+     - x            (M) : horizontal position on map (float 0.0 - 1.0)
+     - y            (M) : vertical position on map (float 0.0 - 1.0)
+     - background   (M) : drawable resource (image)
+     - foreground   (M) : drawable resource (image)
+     - description  (O) : description of the level (string reference in "strings.xml")
+
+
+  Example:
+
+  <map>
+    <background
+      resource="@drawable/map_background"
+    />
+    <layerMain
+      resource="@drawable/map_main"
+      levelWidth="0.05"
+      selectedLevelWidth="0.05"
+      zoomInit="2.0"
+      zoomMin="1.0"
+      zoomMax="8.0"
+    />
+    <layer
+      resource="@anim/map_anim_layer"
+      zoomFactor="0.5"
+      foreground="false"
+      fitScreen="true"
+    />
+    <layer
+      resource="@drawable/map_fore_layer"
+      zoomFactor="2.0"
+      foreground="true"
+      fitScreen="false"
+      alpha="0.5"
+    />
+    <levelDefault
+      background="@drawable/level_default_bkg"
+      foreground="@drawable/level_default_fore"
+      description="@string/level_default_description"
+    />
+    <level
+      id="1"
+      x="0.5"
+      y="0.25"
+      background="@drawable/level_1_bkg"
+      foreground="@drawable/level_1_fore"
+      description="@string/level_1_description"
+    />
+    <level
+      id="2"
+      x="0.25"
+      y="0.75"
+      background="@drawable/level_2_bkg"
+      foreground="@drawable/level_2_fore"
+      description="@string/level_2_description"
+    />
+  </map>
+
+-->

@@ -1,0 +1,23 @@
+<preference-headers
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <header
+        android:fragment="com.replica.engine.PreferencesFragmentGeneral"
+        android:title="@string/preference_general"
+        android:summary="@string/preference_general_summary">
+    </header>
+
+    <header
+        android:fragment="com.replica.engine.PreferencesFragmentAudio"
+        android:title="@string/preference_audio"
+        android:summary="@string/preference_audio_summary" >
+    </header>
+
+    <!-- device specific settings -->
+    <header
+        android:fragment="com.replica.game.PreferencesFragmentControls"
+        android:title="@string/preference_controls"
+        android:summary="@string/preference_controls_summary">
+    </header>
+
+</preference-headers>

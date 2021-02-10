@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  main:
+  Specifies general resources used during the game.
+  This file is optional.
+
+    - level_end (O) (0 or 1) :
+      Default background of results screen when finishing a level (can be animated).
+      - filename  (M) : image or animation resource
+      - animation (O) : specifies if animated (in "anim" directory, instead of "drawable")
+
+    - game_won (O) (0 or 1) :
+      Animation played when finishing the game (played before the end game results screen).
+      - filename (M) : XML animation file in "xml" directory
+
+    - game_won_background (O) (0 or 1) :
+      Background of result screen when finishing the game (can be animated).
+      - filename  (M) : image or animation resource
+      - animation (O) : specifies if animated (in "anim" directory, instead of "drawable")
+
+    - game_lost (O) (0 or 1) :
+      Animation played when losing the game (played before the end game results screen).
+      - filename (M) : XML animation file in "xml" directory
+
+    - game_lost_background (O) (0 or 1) :
+      Background of result screen when losing the game (can be animated).
+      - filename  (M) : image or animation resource
+      - animation (O) : specifies if animated (in "anim" directory, instead of "drawable")
+
+
+    Example:
+
+    <main>
+      <level_end filename="results_level_background" animation="false" />
+      <game_won filename="anim_victory" />
+      <game_won_background filename="endgame_won_background" animation="false" />
+      <game_lost filename="anim_death" />
+      <game_lost_background filename="endgame_lost_anim_background" animation="true" />
+    </main>
+
+-->

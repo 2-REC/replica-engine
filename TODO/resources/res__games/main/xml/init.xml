@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- !!!! TODO: see if can be empty !!!! -->
+<init>
+    <animations>
+        <animation filename="anim_start_logo" />
+        <animation filename="anim_start_title" />
+    </animations>
+    <musics>
+        <music id="0" filename="music_menu" />
+        <music id="1" filename="music_prefs" />
+        <music id="2" filename="music_level_select" />
+        <music id="5" filename="music_end_game" />
+        <music id="3" filename="music_end_level" />
+    </musics>
+    <sounds>
+        <sound id="0" filename="sound_ok" />
+        <sound id="1" filename="sound_cancel" />
+        <sound id="2" filename="sound_move" />
+        <sound id="3" filename="sound_start" />
+        <sound id="4" filename="sound_test" />
+    </sounds>
+</init>

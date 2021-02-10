@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  animation:
+  Specifies information about an animation to be played by "AnimationPlayerActivity".
+  => 1 file per animation.
+  Referred in:
+  - init.xml
+  - end.xml
+  - main.xml
+  - level_tree.xml
+  - etc.
+
+
+   - type  (M) : type of animation.
+     Must be one of the following:
+     0 : IMAGES_SEQUENCE
+     1 : MOVING_IMAGES
+     2 : MOVING_TEXT
+     3 : VIDEO
+   - music (O) : OGG file in "raw" directory
+   - anim  (C) : animation file (XML file containing a "animation-list" element)
+                  Must be present for animations of type 0 ("IMAGES_SEQUENCE")
+
+
+   - layer (C) (1+) :
+     Information about a layer for a "MOVING_IMAGES" animation (type 1)
+     - drawable    (M) : drawable resource (image or animation)
+     - sizeFactorX (O) : width size factor related to screen (float 0.1 - ...) (default 1.0)
+     - sizeFactorY (O) : height size factor related to screen (float 0.1 - ...) (default 1.0)
+     - width       (O) : relative desired width (only used for ratio) (integer)
+     - height      (O) : relative desired height (only used for ratio) (integer)
+     - ratio       (O) : if keep ratio, and if keep width or height ("width" | "height") (default: don't keep ratio)
+     - x           (O) : horizontal offset on screen (float -1.0 - 1.0) (default: 0.0)
+     - y           (O) : vertical offset on screen (float -1.0 - 1.0) (default: 0.0)
+     - anim        (O) : animation file for the layer (XML file containing a "set" element)
+
+
+    Examples:
+
+    <animation
+      type="0"
+      music="@raw/music_anim"
+      anim="@anim/anim_list"
+    />
+
+    <animation
+      type="1"
+      >
+      <layer
+        drawable="@drawable/image"
+        width="480"
+        height="500"
+        ratio="width"
+        anim="@anim/anim_set"
+      />
+    </animation>
+
+    <animation
+      type="3"
+      anim="@raw/video"
+    />
+
+-->
+

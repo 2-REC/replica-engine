@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- End animation -->
+<end>
+    <animations>
+        <!-- ADD ANIMATIONS HERE -->
+<!--
+        <animation filename="anim_movingimages_1" />
+-->
+    </animations>
+</end>

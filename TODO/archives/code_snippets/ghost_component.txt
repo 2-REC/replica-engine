@@ -1,0 +1,70 @@
+GHOST COMPONENT:
+
+
+=> Spawn?
+  => set use orientation
+    => InputGameInterface "switchLayout"
+    => when spawning ghost object (eg: in PlayerComponent)
+
+set buttons in GhostComponent?
+  => - Attack/release button
+     - Jump/fly button
+
+----
+FROM GAME:
+I’ve outfitted you with a special type of energy weapon that allows you to control machines.
+  While standing on the ground, <b>hold down the attack button</b> for a few seconds to charge up the <b>Possession Orb</b>.
+Once the Possession Orb is released, you can control its movement by tilting the phone.
+  Running it into a mechanical object will allow you to possess that object.
+  Pressing the attack button will destroy it and return control to your body.
+Try possessing that robot down there and using him to break through those blue blocks.
+  Here’s a hint: releasing a possessed robot causes it to explode.
+----
+
+PlayerComponent
+- when charge attack button
+	=> spawnPlayerGhost
+
+
+
+Uses:
+-----
+
+Turret:
+- GhostComponent
+	- target action: IDLE
+	- changeActionOnButton: ATTACK
+- ChangeComponentsComponent
+	- SwapOut: attackAtDistance
+	- SwapIn: possessedGhost (GhostComponent of same object)
+- HitReactionComponent
+	- setPossessionComponent: swap (ChangeComponentsComponent of same object)
+- vulnerability volume: HitType.POSSESS
+
+
+BRobot:
+- GhostComponent
+	- set speed / accel / jump impulse / kill on release / delay on release
+- ChangeComponentsComponent
+	- SwapOut:
+		- PatrolComponent
+		- SimplePhysicsCommponent
+	- SwapIn:
+		- ghost (GhostComponent of same object)
+		- SimplePhysicsCommponent
+		- sparks
+- HitReactionComponent
+	- setPossessionComponent: swap (ChangeComponentsComponent of same object)
+
+
+PlayerGhost:
+- GhostComponent
+	- set speed / accel / use orientation sensor / kill on release
+	- set LifeTime (int)
+- attack volume: HitType.POSSESS
+
+
+
+
+
+

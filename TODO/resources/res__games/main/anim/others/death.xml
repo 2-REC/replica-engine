@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animation-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true"
+    >
+<!-- GAME - BEGIN -->
+<!-- TODO : set ending images (+create them in "drawables") -->
+<!-- !? and what duration ?! -->
+    <item
+        android:drawable="@drawable/anim_death01"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death02"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death01"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death02"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death01"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death02"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death01"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death02"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death01"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death02"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death01"
+        android:duration="83"
+    />
+    <item
+        android:drawable="@drawable/anim_death02"
+        android:duration="83"
+    />
+<!-- GAME - END -->
+</animation-list>

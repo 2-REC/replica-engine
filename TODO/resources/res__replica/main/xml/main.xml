@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+<!-- !!!! TODO: check if can be empty !!!! -->
+<!--
+    <level_end filename="results_level_background" animation="false" />
+    <game_won filename="anim_movingimages_1" />
+    <game_won_background filename="results_endgame_won_background" animation="false" />
+    <game_lost filename="anim_death" />
+    <game_lost_background filename="results_endgame_lost_background" animation="false" />
+-->
+</main>

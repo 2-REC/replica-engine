@@ -1,0 +1,15 @@
+<resources>
+
+	<!-- Preferences -->
+    <string name="preference_tilt_sensitivity">Tilt Sensitivity</string>
+    <string name="preference_tilt_sensitivity_summary">Adjusts orientation sensitivity.</string>
+    <string name="preference_tilt_min">Slow</string>
+    <string name="preference_tilt_max">Fast</string>
+    <string name="preference_enable_screen_controls">Enable on-screen buttons</string>
+    <string name="preference_enable_screen_controls_summary">Displays buttons on screen.</string>
+    <string name="preference_enable_slider">Enable Slider</string>
+    <string name="preference_enable_slider_summary">Enable Slider control.</string>
+    <string name="preference_flip">Flip controls</string>
+    <string name="preference_flip_summary">Reverse controls layout.</string>
+
+</resources>

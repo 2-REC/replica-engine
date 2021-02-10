@@ -1,0 +1,1615 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0083)http://replicaisland.blogspot.de/2010/05/control-configuration-and-abstraction.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:b = 
+"http://www.google.com/2005/gml/b" xmlns:data = 
+"http://www.google.com/2005/gml/data" xmlns:expr = 
+"http://www.google.com/2005/gml/expr"><HEAD><LINK rel="stylesheet" type="text/css" 
+href="Control%20Configuration%20and%20Abstraction_files/prettify.css">
+<SCRIPT type="text/javascript" src="Control%20Configuration%20and%20Abstraction_files/prettify.js">
+</SCRIPT>
+
+<META content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<SCRIPT type="text/javascript">(function() { var b=window,e="jstiming",f="tick";(function(){function c(a){this.t={};this.tick=function(a,c,d){d=void 0!=d?d:(new Date).getTime();this.t[a]=[d,c]};this[f]("start",null,a)}var a=new c;b.jstiming={Timer:c,load:a};if(b.performance&&b.performance.timing){var d=b.performance.timing,a=b[e].load,g=d.navigationStart,d=d.responseStart;0<g&&d>=g&&(a[f]("_wtsrt",void 0,g),a[f]("wtsrt_","_wtsrt",d))}try{a=null,b.chrome&&b.chrome.csi&&(a=Math.floor(b.chrome.csi().pageT)),null==a&&b.gtbExternal&&(a=b.gtbExternal.pageT()),null==a&&b.external&&
+(a=b.external.pageT),a&&(b[e].pt=a)}catch(j){}})();b.tickAboveFold=function(c){var a=0;if(c.offsetParent){do a+=c.offsetTop;while(c=c.offsetParent)}c=a;750>=c&&b[e].load[f]("aft")};var h=!1;function i(){h||(h=!0,b[e].load[f]("firstScrollTime"))}b.addEventListener?b.addEventListener("scroll",i,!1):b.attachEvent("onscroll",i);
+ })();</SCRIPT>
+
+<META name="MSSmartTagsPreventParsing" content="true">
+<META name="GENERATOR" content="MSHTML 9.00.8112.16446"><LINK rel="icon" type="image/x-icon" 
+href="http://replicaisland.blogspot.de/favicon.ico"><LINK rel="canonical" href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html">
+<LINK title="Replica Island - Atom" rel="alternate" type="application/atom+xml" 
+href="http://replicaisland.blogspot.com/feeds/posts/default"><LINK title="Replica Island - RSS" 
+rel="alternate" type="application/rss+xml" href="http://replicaisland.blogspot.com/feeds/posts/default?alt=rss">
+<LINK title="Replica Island - Atom" rel="service.post" type="application/atom+xml" 
+href="http://www.blogger.com/feeds/2127023973845776737/posts/default"><LINK 
+title="RSD" rel="EditURI" type="application/rsd+xml" href="http://www.blogger.com/rsd.g?blogID=2127023973845776737">
+<LINK title="Replica Island - Atom" rel="alternate" type="application/atom+xml" 
+href="http://replicaisland.blogspot.com/feeds/6798971062615480521/comments/default"><!--[if IE]> 
+
+<SCRIPT> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </SCRIPT>
+ <![endif]--><TITLE>Replica Island: Control Configuration and 
+Abstraction</TITLE><LINK rel="stylesheet" type="text/css" href="Control%20Configuration%20and%20Abstraction_files/1355816394-widget_css_bundle.css">
+<LINK rel="stylesheet" type="text/css" href="Control%20Configuration%20and%20Abstraction_files/gsearch.css">
+<LINK rel="stylesheet" type="text/css" href="http://www.blogger.com/dyn-css/authorization.css?targetBlogID=2127023973845776737&amp;zx=2a7bf647-941f-4cd8-9311-960a7d8149d1">
+<STYLE type="text/css">
+#navbar-iframe { display:block }
+#b-navbar{white-space:nowrap;color:#333;height:29px;border-bottom:1px solid #f5ece2;background:transparent;font-size:13px;font-family:Arial,Sans-serif;position:relative}#b-navbar #b-navbar-bg{position:absolute;left:0;top:0;width:100%;height:30px;z-index:-1;background-color:#e1d4c0;opacity:1.0;filter:alpha(opacity=100)}#b-navbar-user{width:500px;height:30px}.navbar-float-left{float:left}.navbar-float-right{float:right}#b-navbar-controls{margin-left:.2em;height:29px}#b-navbar #b-navbar-logo{display:block;margin-right:8px;margin-left:8px;width:20px;height:20px;background:url('//img1.blogblog.com/img/navbar/icons_orange.png') no-repeat -26px 0;cursor:pointer;cursor:hand}#b-navbar #b-query-box{background-color:#fff;margin:0 .5em 0 0;border:1px solid #bcac97;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;padding:0 .3em}#b-navbar #b-query-icon{display:block;width:13px;height:13px;cursor:pointer;cursor:hand;background:url('//img1.blogblog.com/img/navbar/icons_orange.png') no-repeat 0 0}#b-navbar #b-query-icon:hover{background:url('//img1.blogblog.com/img/navbar/icons_orange.png') no-repeat -13px 0}#b-navbar #b-query{font-size:13px;color:#000;background-color:transparent;border:none;width:10em;margin:0}#b-navbar .b-link,#b-navbar #b-user{font-size:13px;vertical-align:middle;padding:0 .4em}#b-navbar .b-link{color:#664e38;text-decoration:none;white-space:nowrap;cursor:pointer;cursor:hand}#b-navbar .b-link:hover{color:#047;text-decoration:underline}#b-navbar .b-menu{border:none;border:0;margin:0;padding:0 10px}#b-navbar .b-menu ul{list-style:none;margin:0;padding:0}#b-navbar .b-menu ul ul{background-color:#fff;color:#000}#b-navbar .b-menu li{background:none;border:none;font-weight:normal;margin:0;padding:0}#b-navbar .b-menu li:hover{background-color:#fff}#b-navbar .b-menu li a{display:block;margin:0;padding:0 10px 0 10px;text-align:center;text-decoration:none;height:29px;line-height:30px;cursor:pointer;position:relative}#b-navbar .b-menu li ul{display:none;height:auto;padding:0;margin:0;position:absolute;z-index:200}#b-navbar .b-menu li:hover ul{display:block}#b-navbar .b-menu li li{background-color:#fff;display:block;margin:0;padding:0}#b-navbar .b-menu li:hover li a{background:none}#b-navbar .b-menu li a:hover,#b-navbar .b-menu li:hover .b-link{color:#000;text-decoration:none}#b-navbar .b-menu ul li a span.arrow{background:url('//img1.blogblog.com/img/navbar/arrows-tan.png') no-repeat -12px center;display:inline-block;width:7px;height:10px;margin:0 0 0 5px}#b-navbar .b-menu li:hover span.arrow{background:url('//img1.blogblog.com/img/navbar/arrows-tan.png') no-repeat 0 center}#b-navbar .b-menu li ul a{display:block;height:35px;font-size:13px;font-style:normal;margin:0;padding:0 25px 0 15px;text-align:left;color:#777777}#b-navbar .b-menu ul li ul{border:1px #fff solid;-webkit-box-shadow:0 4px 16px rgba(0,0,0,0.2);-moz-box-shadow:0 4px 16px rgba(0,0,0,0.2);-ms-box-shadow:0 4px 16px rgba(0,0,0,0.2);box-shadow:2px 4px 4px rgba(0,0,0,0.2)}#b-navbar .b-menu li ul a:hover,#b-navbar .b-menu li ul li:hover a{border:0;cursor:pointer;background-color:#f1f1f1;color:#000}#b-navbar .b-menu p{clear:left}#bt-unflag-body{display:none}#flagi,#unflagi{display:none;top:3px;color:#000;background-color:#ff9;border:1px solid #333;z-index:300;padding:4px;font-size:.7em;line-height:.8em}#flagi a,#unflagi a{color:#3366cc;text-decoration:underline}.b-mobile{display:none}#b-sms{margin:0 0 0 100px;padding:4px 7px;line-height:1em;font-size:100%;text-align:left}#b-sms a{margin-right:.5em;line-height:1em}#b-sms a:hover{text-decoration:underline}@media handheld{body .b-mobile{display:block}body #b-navbar-fg,body #flagi,body #unflagi{display:none}}</STYLE>
+
+<STYLE id="page-skin-1" type="text/css"><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Minima
+Designer: Douglas Bowman
+URL:      www.stopdesign.com
+Date:     26 Feb 2004
+Updated by: Blogger Team
+----------------------------------------------- */
+/* Variable definitions
+====================
+<Variable name="bgcolor" description="Page Background Color"
+type="color" default="#fff">
+<Variable name="textcolor" description="Text Color"
+type="color" default="#333">
+<Variable name="linkcolor" description="Link Color"
+type="color" default="#58a">
+<Variable name="pagetitlecolor" description="Blog Title Color"
+type="color" default="#666">
+<Variable name="descriptioncolor" description="Blog Description Color"
+type="color" default="#999">
+<Variable name="titlecolor" description="Post Title Color"
+type="color" default="#c60">
+<Variable name="bordercolor" description="Border Color"
+type="color" default="#ccc">
+<Variable name="sidebarcolor" description="Sidebar Title Color"
+type="color" default="#999">
+<Variable name="sidebartextcolor" description="Sidebar Text Color"
+type="color" default="#666">
+<Variable name="visitedlinkcolor" description="Visited Link Color"
+type="color" default="#999">
+<Variable name="bodyfont" description="Text Font"
+type="font" default="normal normal 100% Georgia, Serif">
+<Variable name="headerfont" description="Sidebar Title Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif">
+<Variable name="pagetitlefont" description="Blog Title Font"
+type="font"
+default="normal normal 200% Georgia, Serif">
+<Variable name="descriptionfont" description="Blog Description Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
+<Variable name="postfooterfont" description="Post Footer Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
+<Variable name="startSide" description="Side where text starts in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="Side where text ends in blog language"
+type="automatic" default="right">
+*/
+/* Use this with templates/template-twocol.html */
+body {
+background:#ffffff;
+margin:0;
+color:#333333;
+font:x-small Georgia Serif;
+font-size/* */:/**/small;
+font-size: /**/small;
+text-align: center;
+}
+a:link {
+color:#5588aa;
+text-decoration:none;
+}
+a:visited {
+color:#999999;
+text-decoration:none;
+}
+a:hover {
+color:#cc6600;
+text-decoration:underline;
+}
+a img {
+border-width:0;
+}
+/* Header
+-----------------------------------------------
+*/
+#header-wrapper {
+width:660px;
+margin:0 auto 10px;
+border:0px solid #cccccc;
+}
+#header-inner {
+background-position: center;
+margin-left: auto;
+margin-right: auto;
+}
+#header {
+margin: 5px;
+border: 0px solid #cccccc;
+text-align: center;
+color:#666666;
+}
+#header h1 {
+margin:5px 5px 0;
+padding:15px 20px .25em;
+line-height:1.2em;
+text-transform:uppercase;
+letter-spacing:.2em;
+font: normal normal 200% Verdana, sans-serif;
+}
+#header a {
+color:#666666;
+text-decoration:none;
+}
+#header a:hover {
+color:#666666;
+}
+#header .description {
+margin:0 5px 5px;
+padding:0 20px 15px;
+max-width:700px;
+text-transform:uppercase;
+letter-spacing:.2em;
+line-height: 1.4em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+color: #999999;
+}
+#header img {
+margin-left: auto;
+margin-right: auto;
+}
+/* Outer-Wrapper
+----------------------------------------------- */
+#outer-wrapper {
+width: 860px;
+margin:0 auto;
+padding:10px;
+text-align:left;
+font: normal normal 99% Verdana, sans-serif;
+}
+#main-wrapper {
+width: 610px;
+float: left;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+width: 220px;
+float: right;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h2 {
+margin:1.5em 0 .75em;
+font:normal normal 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color:#999999;
+}
+/* Posts
+-----------------------------------------------
+*/
+h2.date-header {
+margin:1.5em 0 .5em;
+}
+.post {
+margin:.5em 0 1.5em;
+border-bottom:1px dotted #cccccc;
+padding-bottom:1.5em;
+}
+.post h3 {
+margin:.25em 0 0;
+padding:0 0 4px;
+font-size:140%;
+font-weight:normal;
+line-height:1.4em;
+color:#cc6600;
+}
+.post h3 a, .post h3 a:visited, .post h3 strong {
+display:block;
+text-decoration:none;
+color:#cc6600;
+font-weight:normal;
+}
+.post h3 strong, .post h3 a:hover {
+color:#333333;
+}
+.post-body {
+margin:0 0 .75em;
+line-height:1.6em;
+}
+.post-body blockquote {
+line-height:1.3em;
+}
+.post-footer {
+margin: .75em 0;
+color:#999999;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+line-height: 1.4em;
+}
+.comment-link {
+margin-left:.6em;
+}
+.post img {
+padding:4px;
+border:1px solid #cccccc;
+}
+.post blockquote {
+margin:1em 20px;
+}
+.post blockquote p {
+margin:.75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin:1em 0;
+font-weight: bold;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color: #999999;
+}
+#comments-block {
+margin:1em 0 1.5em;
+line-height:1.6em;
+}
+#comments-block .comment-author {
+margin:.5em 0;
+}
+#comments-block .comment-body {
+margin:.25em 0 0;
+}
+#comments-block .comment-footer {
+margin:-.25em 0 2em;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.1em;
+}
+#comments-block .comment-body p {
+margin:0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar {
+color: #666666;
+line-height: 1.5em;
+}
+.sidebar ul {
+list-style:none;
+margin:0 0 0;
+padding:0 0 0;
+}
+.sidebar li {
+margin:0;
+padding-top:0;
+padding-right:0;
+padding-bottom:.25em;
+padding-left:15px;
+text-indent:-15px;
+line-height:1.5em;
+}
+.sidebar .widget, .main .widget {
+border-bottom:1px dotted #cccccc;
+margin:0 0 1.5em;
+padding:0 0 1.5em;
+}
+.main .Blog {
+border-bottom-width: 0;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+color: #999999;
+font-weight: bold;
+line-height: 1.6em;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+.profile-link {
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+text-transform: uppercase;
+letter-spacing: .1em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+width:660px;
+clear:both;
+margin:0 auto;
+padding-top:15px;
+line-height: 1.6em;
+text-transform:uppercase;
+letter-spacing:.1em;
+text-align: center;
+}
+
+--></STYLE>
+
+<SCRIPT type="text/javascript">
+    window.foo_save = window.onunload;
+    window.onload = function() {
+     prettyPrint();
+     if (window.foo_save) {
+        window.foo_save();
+      }
+  };
+</SCRIPT>
+
+<SCRIPT type="text/javascript">var a=navigator,b="userAgent",c="indexOf",f="&m=1",g="(^|&)m=",h="?",i="?m=1";function j(){var d=window.location.href,e=d.split(h);switch(e.length){case 1:return d+i;case 2:return 0<=e[1].search(g)?null:d+f;default:return null}}if(-1!=a[b][c]("Mobile")&&-1!=a[b][c]("WebKit")&&-1==a[b][c]("iPad")||-1!=a[b][c]("Opera Mini")||-1!=a[b][c]("IEMobile")){var k=j();k&&window.location.replace(k)};
+</SCRIPT>
+
+<SCRIPT type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('headEnd');
+</SCRIPT>
+</HEAD>
+<BODY>
+<DIV id="navbar" class="navbar section">
+<DIV id="Navbar1" class="widget Navbar">
+<SCRIPT type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener('load',
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </SCRIPT>
+<IFRAME id="navbar-iframe" title="Blogger Navigation and Search" height="30" 
+marginHeight="0" src="Control%20Configuration%20and%20Abstraction_files/navbar.htm" 
+frameBorder="0" width="100%" allowTransparency="true" marginWidth="0" scrolling="no"></IFRAME>
+<DIV></DIV>
+<SCRIPT type="text/javascript">
+(function() {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//pagead2.googlesyndication.com/pagead/js/google_top.js';
+var head = document.getElementsByTagName('head')[0];
+if (head) {
+head.appendChild(script);
+}})();
+</SCRIPT>
+</DIV></DIV>
+<DIV id="outer-wrapper">
+<DIV id="wrap2"><!-- skip links for text browsers --><SPAN style="display: none;" 
+id="skiplinks"><A href="http://replicaisland.blogspot.de/2010/05/control-configuration-and-abstraction.html#main">skip 
+to main </A> |      <A href="http://replicaisland.blogspot.de/2010/05/control-configuration-and-abstraction.html#sidebar">skip 
+to sidebar</A></SPAN>
+<DIV id="header-wrapper">
+<DIV id="header" class="header section">
+<DIV id="Header1" class="widget Header">
+<DIV id="header-inner"><A style="display: block;" href="http://replicaisland.blogspot.de/">
+<IMG style="display: block;" id="Header1_headerimg" alt="Replica Island" src="Control%20Configuration%20and%20Abstraction_files/logo_en.png" 
+width="483" height="169"></A></DIV></DIV></DIV></DIV>
+<DIV id="content-wrapper">
+<DIV style="text-align: center;" id="crosscol-wrapper">
+<DIV id="crosscol" class="crosscol section"></DIV></DIV>
+<DIV id="main-wrapper">
+<DIV id="main" class="main section">
+<DIV id="Blog1" class="widget Blog">
+<DIV class="blog-posts hfeed"><!-- google_ad_section_start(name=default) -->
+<DIV class="date-outer">
+<H2 class="date-header"><SPAN>Monday, May 3, 2010</SPAN></H2>
+<DIV class="date-posts">
+<DIV class="post-outer">
+<DIV class="post hentry uncustomized-post-template" itemtype="http://schema.org/BlogPosting" 
+itemscope="itemscope"><A name="6798971062615480521"></A>
+<H3 class="post-title entry-title" itemprop="name">Control Configuration and 
+Abstraction</H3>
+<DIV class="post-header">
+<DIV class="post-header-line-1"></DIV></DIV>
+<DIV id="post-body-6798971062615480521" class="post-body entry-content" 
+itemprop="articleBody"><BR class="Apple-interchange-newline"><BR>
+<DIV style="margin: 0px;">The #1 thing that I've learned since shipping Replica 
+Island is that users want configurable controls. &nbsp;I mean, I might have 
+guessed that some devices would have one sort of controller and not another, but 
+I didn't anticipate the number of people who prefer a specific control 
+configuration even when others are available. &nbsp;Users with trackballs and 
+directional pads asked for configurable keyboard settings, and when I added 
+orientation sensor-based movement for devices without other controls (I'm 
+looking at you, Xperia), many users who could already play the game chose to 
+switch to tilt controls too. &nbsp;I've made four updates so far and all of them 
+have had to do with the input system; in the first three I added more and more 
+configuration options, and in the most recent (v1.3) I rewrote the core input 
+framework to improve non-standard control configurations.</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">When I started writing Replica Island, the only device 
+available was the G1. &nbsp;About half way through development I switched to an 
+HTC Magic, and at the very end of development I switched to a Nexus One. The 
+game was entirely designed around HTC's trackball-on-the-right design. 
+&nbsp;Fairly late in development, devices sporting directional pads (like the 
+Motorola Cliq, and more importantly, the Droid) started to hit the market, so I 
+added some support for d-pad controls. &nbsp;I didn't really think anybody was 
+going to use the keyboard to play, so I only added a few key-based controls to 
+support the ODROID.</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">The input system started out like this:</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="text-align: center; clear: both;" class="separator"><A style="margin-right: 1em; margin-left: 1em;" 
+href="Control%20Configuration%20and%20Abstraction_files/input_original.png" 
+imageanchor="1"><IMG border="0" src="Control%20Configuration%20and%20Abstraction_files/input_original.png"></A></DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">MotionEvents from touch and trackball motion, as well 
+as KeyEvents, were passed to the InputSystem (via the GameThread, for reasons 
+I'd rather not discuss), which recorded them in some internal structures. 
+&nbsp;The goal here was to abstract the Android events from the game interface. 
+&nbsp;The game wants to be able to say things like "is the jump button pressed," 
+or "was the jump button just pressed since the last frame," or "how long has it 
+been since the last time the button was pressed." &nbsp;It's a query-based 
+interface, rather than the message-based interface that the Android framework 
+provides. &nbsp;So the initial role of the InputSystem was to record Android 
+events so that they could be queried in the future.</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">The trackball was tricky to get right. &nbsp;I want to 
+allow the player to flick the trackball in a direction and have the character 
+get an impulse in that direction scaled by the magnitude of the flick. &nbsp;But 
+the Android motion events come in at a fixed frequency and fixed magnitude, so 
+in order to build a vector describing recent motion, I needed to maintain some 
+history between motion events. &nbsp;My first implementation, which survived for 
+the entire course of development, was to cache a history of 10 motion events and 
+calculate the average direction of motion across all of them to find the flick 
+direction and magnitude. &nbsp;After a specific timeout had passed with no new 
+events, the cache was cleared and averaging would begin again with the next 
+event.</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">This worked ok as a way to calculate a motion vector, 
+but it had problems. &nbsp;The biggest issue was that there was no way for a 
+user to move slowly; even if the user rolled the ball slowly (thus causing 
+motion events to come less frequently), as long as he rolled fast enough to make 
+the internal event timeout, the events would get averaged together and would 
+come out looking the same as a fast flick. &nbsp;So users who tried to move with 
+precision or in small steps often found themselves rocketing across the 
+level.</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">When I went to add d-pad support, I just treated the 
+pad as a different source of motion events. &nbsp;I treated each keydown as a 
+roll of a specific magnitude in a specific direction, and fed that into the same 
+cache system I used for motion events. &nbsp;This worked, sort of: it allowed me 
+to pipe the directional pad through the trackball interface (which connected 
+directly to the game) pretty easily, but it didn't feel good. &nbsp;The problem 
+with this approach was that directional pad events don't need any averaging; in 
+fact, you want exactly the most recent state to be represented, as the player 
+can release a key at any time (the trackball, unlike other kinds of input, never 
+goes "up", and thus required a history). &nbsp;So directional pad support in 
+Replica Island, in the first few versions, sucked.</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">Add in configurable control options and very quickly 
+my simple G1-centric input system grew into a mess that didn't work very well. 
+&nbsp;So, for the most recent version, I rewrote the whole thing. &nbsp;Now the 
+structure looks like this:</DIV>
+<DIV style="text-align: center; clear: both;" class="separator"><A style="margin-right: 1em; margin-left: 1em;" 
+href="Control%20Configuration%20and%20Abstraction_files/input_new.png" 
+imageanchor="1"><IMG border="0" src="Control%20Configuration%20and%20Abstraction_files/input_new.png"></A></DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">The main change here is to separate input recording 
+(necessary for querying) from game-specific filtering and control configuration 
+switching. &nbsp;The <A href="http://code.google.com/p/replicaisland/source/browse/trunk/src/com/replica/replicaisland/InputSystem.java">InputSystem</A> 
+is now generic; it just records input events from the keyboard, touch panel, 
+orientation sensor, and trackball, and provides an interface for the current 
+state (as defined by the most recently received events) to be queried. &nbsp;A 
+new system, <A href="http://code.google.com/p/replicaisland/source/browse/trunk/src/com/replica/replicaisland/InputGameInterface.java">InputGameInterface</A>, 
+reads the hardware state from InputSystem, applies heuristics and filters, and 
+presents fake buttons for the game to use. &nbsp;This way the game can ask for 
+the "directional pad" and get input from a trackball, orientation sensor, 
+keyboard, directional pad, or whatever, already filtered and normalized. &nbsp;I 
+put all of the filtering code for the trackball into this class, and I can now 
+pass directional pad input directly to the game without tying it to the 
+trackball.</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">Speaking of the trackball, I changed my approach to 
+filtering. &nbsp;Now I accumulate trackball events that occur within a very 
+short cutoff, and average them after a slightly longer cutoff. &nbsp;Instead of 
+turning the trackball input "off" after a fixed duration, I make it decay until 
+it reaches zero. &nbsp;This lets the user make small, precise movements, and 
+still get a big motion from a large flick (as in the latter case, events occur 
+in rapid succession and accumulate). &nbsp;This method also gave me an obvious 
+spot to stick a sensitivity factor for the trackball, which several users of 
+devices with optical trackpads (HTC Desire, Samsung Moment, etc) had 
+requested.</DIV>
+<DIV style="margin: 0px;"><BR></DIV>
+<DIV style="margin: 0px;">The new system probably needs a bit more tuning, but I 
+played the game through with it and it feels pretty good. &nbsp;The code is 
+about 100x cleaner now, and InputSystem is something that others can easily 
+reuse without any other dependencies.</DIV>
+<DIV style="clear: both;"></DIV></DIV>
+<DIV class="post-footer">
+<DIV class="post-footer-line post-footer-line-1"><SPAN 
+class="post-author vcard">Posted by<SPAN class="fn"><A title="author profile" 
+href="http://www.blogger.com/profile/16079744366139636224" rel="author" 
+itemprop="author">Chris</A></SPAN></SPAN><SPAN class="post-timestamp">at<A 
+class="timestamp-link" title="permanent link" href="http://replicaisland.blogspot.de/2010/05/control-configuration-and-abstraction.html" 
+rel="bookmark" itemprop="url"><ABBR class="published" title="2010-05-03T13:55:00-07:00" 
+itemprop="datePublished">1:55 PM</ABBR></A></SPAN><SPAN 
+class="reaction-buttons"></SPAN><SPAN class="star-ratings"></SPAN><SPAN class="post-comment-link">
+</SPAN><SPAN class="post-backlinks post-comment-link"></SPAN><SPAN class="post-icons">
+<SPAN class="item-control blog-admin pid-191266870"><A title="Edit Post" href="http://www.blogger.com/post-edit.g?blogID=2127023973845776737&amp;postID=6798971062615480521&amp;from=pencil">
+<IMG class="icon-action" alt="" src="Control%20Configuration%20and%20Abstraction_files/icon18_edit_allbkg.gif" 
+width="18" height="18"></A></SPAN></SPAN>
+<DIV class="post-share-buttons goog-inline-block"></DIV></DIV>
+<DIV class="post-footer-line post-footer-line-2"><SPAN class="post-labels">
+Labels:<A href="http://replicaisland.blogspot.de/search/label/code%20design" 
+rel="tag">code design</A>,<A href="http://replicaisland.blogspot.de/search/label/targeting%20Android" 
+rel="tag">targeting Android</A></SPAN></DIV>
+<DIV class="post-footer-line post-footer-line-3"><SPAN class="post-location">
+</SPAN></DIV></DIV></DIV>
+<DIV id="comments" class="comments"><A name="comments"></A>
+<H4>15 comments:      </H4>
+<DIV class="comments-content">
+<SCRIPT type="text/javascript" src="Control%20Configuration%20and%20Abstraction_files/comments.js" async="async"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+    (function() {
+      var items = [{'id': '9024976703668890369', 'body': 'Interesting. I would have thought that d-pad support would have been fairly trivial. But I guess that\46#39;s just because I\46#39;ve been debugging purely in the emulator and not an actual device. I\46#39;d always been puzzled about how to do trackball movement \46quot;right\46quot;, initially I would probably just done the opposite of what you did: map the trackball to d-pad specific code. :P\74br /\76\74br /\76Great to see you\46#39;re continuing to support RI and the RI engine post-release. Can we expect to see Replica Island 2 at I/O? ;)', 'timestamp': '1272924523881', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751272924523881#c9024976703668890369', 'author': {'name': 'Andrex', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/14462912880548662710'}, 'displayTime': 'May 3, 2010 3:08 PM', 'deleteclass': 'item-control blog-admin pid-34714780'}, {'id': '1571568651242889535', 'body': 'The issue is that I want the game to have a single entry point for movement controls.  I want the game to see a single \46quot;directional pad\46quot;, even if the device has no real dpad.  Only, in the initial implementation, the game was looking for a single trackball, so on devices that didn\46#39;t have one, I emulated it.  \74br /\76\74br /\76Now the game uses virtual buttons exposed by InputGameInterface, and the source of those buttons is unknown to the game engine.\74br /\76\74br /\76No Replica 2 right away, I\46#39;m afraid.  Still lots to do on Replica 1!', 'timestamp': '1272930425176', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751272930425176#c1571568651242889535', 'author': {'name': 'Chris', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/16079744366139636224'}, 'displayTime': 'May 3, 2010 4:47 PM', 'deleteclass': 'item-control blog-admin pid-191266870'}, {'id': '5397722102810481644', 'body': 'Yep, a very time consuming task. This is a large focus (control config \46amp; abstraction) with the middleware, TyphonRT, I\46#39;m finally releasing shortly. It\46#39;s taking a bit of time to resolve things as TyphonRT works across the desktop and Android. When factoring in a configuration system useful across the Android ecosystem including virtual control overlays and desktop configurations it\46#39;s quite the task.\74br /\76\74br /\76Without getting overly wordy I take a similar approach in defining generic input actions controls 1D (buttons), 2D \46amp; 3D. This defines an \46quot;InputSet\46quot;. The game engine components (entity system et al) of TyphonRT don\46#39;t care about the physical input source. \74br /\76\74br /\76Lots more glue and cool stuff involved as everything is XML configurable w/ resource string substitution on Android for action control descriptions, there is the concept of an \46quot;InputCalibration\46quot; which is loaded from an XML file with defaults and device family/model name filtering. \46quot;InputCalibration\46quot; provides for device specific scaling. An example is the N1 trackball vs optical trackball. For 3D cases scaling to ensure that rotation of a game entity when using touch input swiping across the G1 screen is the same as the N1, etc.\74br /\76\74br /\76TyphonRT also provides a neutral event system and works with JInput, AWT, and Android. There are input filter components that can handle additional tasks such as tracking last time a button is pressed and even doing specific filtering for touch screens that are deficient (N1) in order to make virtual control overlays usable. \74br /\76\74br /\76Seeing as I support all sorts of game controllers with axis and dpad input via JInput you bet I\46#39;m hankering for proper bluetooth support in Android as I\46#39;ve already got a controller event system that just needs to be hooked up.\74br /\76\74br /\76Ok.. It\46#39;s getting wordy / beyond wordy... heh.. Basically one can open a Pandora\46#39;s box of sorts with a configurable config system w/ nice abstraction. Making it work across desktop and the entire Android ecosystem is no easy task.', 'timestamp': '1272933878932', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751272933878932#c5397722102810481644', 'author': {'name': 'Mike Leahy', 'avatarUrl': 'http://img1.blogblog.com/img/blank.gif', 'profileUrl': 'http://www.typhon4android.org'}, 'displayTime': 'May 3, 2010 5:44 PM', 'deleteclass': 'item-control blog-admin pid-1229908169'}, {'id': '6399620576946363785', 'body': 'Im having trouble understanding how to use opengl with android. I know theres a lot of documentation for opengl and a lot of documentation for android, but I can\46#39;t put the two together. I read on the google code section that you are planning to work on a skeleton which will be like a framework for games. Is that still planned?', 'timestamp': '1273359557425', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751273359557425#c6399620576946363785', 'author': {'name': 'Anonymous', 'avatarUrl': 'http://img1.blogblog.com/img/blank.gif', 'profileUrl': ''}, 'displayTime': 'May 8, 2010 3:59 PM', 'deleteclass': 'item-control blog-admin pid-2090056823'}, {'id': '2914094243762401276', 'body': 'Anonymous,\74br /\76\74br /\76You can get OpenGL ES up and running on Android in just a few lines of code.  See the API demos that come with the SDK.  You don\46#39;t need a whole game engine.', 'timestamp': '1273363796827', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751273363796827#c2914094243762401276', 'author': {'name': 'Chris', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/16079744366139636224'}, 'displayTime': 'May 8, 2010 5:09 PM', 'deleteclass': 'item-control blog-admin pid-191266870'}, {'id': '7871250031453741382', 'body': 'Mike, you can connect BT controllers like JS1 to Android right now, see my story over @ StackOverflow :) http://stackoverflow.com/questions/2660968/', 'timestamp': '1273782422912', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751273782422912#c7871250031453741382', 'author': {'name': 'Gilead', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/13407008816951592471'}, 'displayTime': 'May 13, 2010 1:27 PM', 'deleteclass': 'item-control blog-admin pid-1201779784'}, {'id': '7541384026803866964', 'body': 'Chris,\74br /\76I am fairly new to Java and wanted to begin learning the language to develop applications on Android. After watching your video on the Android Dev website I am intrigued with game development. In your opinion, what should someone like myself learn in order to get into game development for Android? Is Java enough? Do I need to learn about Physics and other mathematics topics? Your opinion is appreciated. Thanks!', 'timestamp': '1274291518412', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751274291518412#c7541384026803866964', 'author': {'name': 'Chuck', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/14789510707956337658'}, 'displayTime': 'May 19, 2010 10:51 AM', 'deleteclass': 'item-control blog-admin pid-348512611'}, {'id': '4487083189187744838', 'body': '@Chuck\74br /\76\74br /\76If you\46#39;re just starting out with Java and game development, I think it\46#39;s a fine learning tool.  Just target something simple: a tetris clone, or sudoku, or whatever; something that you can accomplish while learning the language and platform.  Once you have a more solid foundation to build upon you can increase the complexity of your projects.\74br /\76\74br /\76I think game design and programming language are pretty much orthogonal issues, so my advice is get comfortable with whatever language first (Java, sure, whatever) and then figure out what kind of games you want to make with it.  When you hit a wall related to the language (which, if you\46#39;re just starting, won\46#39;t be for a long while), consider another approach at that time.', 'timestamp': '1274292219502', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751274292219502#c4487083189187744838', 'author': {'name': 'Chris', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/16079744366139636224'}, 'displayTime': 'May 19, 2010 11:03 AM', 'deleteclass': 'item-control blog-admin pid-191266870'}, {'id': '4435626508460934593', 'body': 'Just wanted to let you know that my samsung moment optical pad does not work at all wit the 1.3 update, which was kind of funny since the update specifically mentions fixing it... anyway, I\46#39;m running android 2.1 if that might make a difference.  Sorry if this is the wrong place for bugs.', 'timestamp': '1274439408059', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751274439408059#c4435626508460934593', 'author': {'name': 'Hasoan', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/16239826672262783121'}, 'displayTime': 'May 21, 2010 3:56 AM', 'deleteclass': 'item-control blog-admin pid-1528164061'}, {'id': '1236881211484799083', 'body': 'One issue I had with the game on the N1 is that with the touch-sensitive buttons it\46#39;s very easy to get too aggressive with the trackball and accidentally press the home or back buttons. I don\46#39;t think there\46#39;s a good solution to this, chalk it up to fragmentation ;)\74br /\76\74br /\76BTW what\46#39;s up with all the workarounds and general noise in the app description and changelog for specific devices. If Cliq is \46quot;broken\46quot; and needs a \46quot;safe mode\46quot; can\46#39;t you detect that at startup and handle it automatically?', 'timestamp': '1274694147901', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751274694147901#c1236881211484799083', 'author': {'name': 'hearn', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/02123376927554957565'}, 'displayTime': 'May 24, 2010 2:42 AM', 'deleteclass': 'item-control blog-admin pid-249790886'}, {'id': '7425296448312132927', 'body': 'Hello Chris, nice game. I&#8217;ve being playing it a little but mostly studying the source for a while. I&#8217;m trying to do a game as well. I&#8217;ve in mind a different concept but I&#8217;m planning it to have the same kind of 2d graphics. I&#8217;m trying to guess some stuff from opengl out of replica. I&#8217;m new at this though, and it&#8217;s a hard task to understand what all the code does. I&#8217;m sorry if this is not the right place to ask for this but could u post the stripped replica island code used as the FPS demo at Google\46#39;s IO? What I&#8217;m basically trying to do right now is find out how you got opengl to work on the glsurfaceview ( .. android:id\75\46quot;@+id/glsurfaceview\46quot; ..), so that it can have other layers, or even be in a linearlayout to only use part of the screen). Could you please help me in this. I&#8217;ve being researching for a week now and every opengl example I&#8217;ve found uses the complete screen and not the XML. I&#8217;ve also found many similar questions regarding this on the web with no answers.', 'timestamp': '1274802883601', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751274802883601#c7425296448312132927', 'author': {'name': 'Christian', 'avatarUrl': 'http://img1.blogblog.com/img/blank.gif', 'profileUrl': ''}, 'displayTime': 'May 25, 2010 8:54 AM', 'deleteclass': 'item-control blog-admin pid-1158469636'}, {'id': '6064883808576928157', 'body': 'Hey Chris, Sorry to pull the comments off topic but I had a question and didn\46#39;t know where to ask it. I wanted to work on a level builder add on and noticed the level layouts seem to be defined in bin files in the raw resources directory. Is there an easy way of reading in these files? I wanted to gain an understanding of them to then be able to build them.\74br /\76\74br /\76Thanks for the awesome code and posts.\74br /\76\74br /\76Tom', 'timestamp': '1274837355629', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751274837355629#c6064883808576928157', 'author': {'name': 'Thomas Sheppard', 'avatarUrl': 'http://img1.blogblog.com/img/blank.gif', 'profileUrl': 'http://androided.wordpress.com'}, 'displayTime': 'May 25, 2010 6:29 PM', 'deleteclass': 'item-control blog-admin pid-659541358'}, {'id': '7813633265434832334', 'body': '@Hasoan\74br /\76\74br /\76Ok, thanks for the report.  Bug reports should probably go here:\74br /\76\74br /\76http://code.google.com/p/replicaisland/issues/list\74br /\76\74br /\76I\46#39;ll double-check the Moment.  The last time I tested on that device was before their 2.1 upgrade.\74br /\76\74br /\76@hearn\74br /\76\74br /\76I actually have code in the game to ignore misclicks on the back and menu keys (I ignore clicks to those buttons within 400 ms of a trackball roll), but there\46#39;s nothing I can do about the home key.  Sigh.\74br /\76\74br /\76The Cliq is not the only broken device--there are a number of devices that use the same broken Qualcomm graphics driver.  It\46#39;s just that the Cliq is (apparently, based on the volume of complaints) the device that sold the most in this category.  I actually do detect the Cliq at runtime and turn safe mode on, but it seems that there\46#39;s maybe another model (the XT?) that I\46#39;ve missed in that test.\74br /\76\74br /\76@ Christian\74br /\76\74br /\76You might want to look at SpriteMethodTest--it\46#39;s much simpler but functionally very similar to Replica Island:\74br /\76\74br /\76http://code.google.com/p/apps-for-android/source/browse/#svn/trunk/SpriteMethodTest\74br /\76\74br /\76The short answer to your question is: just make a layout with a GLSurfaceView in it in XML, give it an id the way you do any Layout element, then find it using that id in your Activity\46#39;s onCreate() method and set a renderer.  Pretty simple.\74br /\76\74br /\76@Thomas Sheppard \74br /\76\74br /\76There\46#39;s a thread about level building going on over at the development community list:\74br /\76\74br /\76http://groups.google.com/group/replica-island-coding-community', 'timestamp': '1274940546435', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751274940546435#c7813633265434832334', 'author': {'name': 'Chris', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/16079744366139636224'}, 'displayTime': 'May 26, 2010 11:09 PM', 'deleteclass': 'item-control blog-admin pid-191266870'}, {'id': '1734682573779356311', 'body': 'You wrote that the input interface code can be reused. I\46#39;m new to Android, and I\46#39;ve been wondering about this aspect. There is no jar to include - from what I saw, only way for code reuse is intents. Am I missing something? should I copy the InputInterface code to my project?', 'timestamp': '1278437081589', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751278437081589#c1734682573779356311', 'author': {'name': 'Oren', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/02685726922532859012'}, 'displayTime': 'July 6, 2010 10:24 AM', 'deleteclass': 'item-control blog-admin pid-1336301958'}, {'id': '6467289971144187799', 'body': 'I\46#39;d like to see it possible to map the volume, search, back, and menu buttons, since they aren\46#39;t used in the game. Because these buttons do other actions as well as what they are assigned to, they are impossible to use in the game. Also, I think the pause button should be reassignable.\74br /\76\74br /\76This would make the game more playable on devices that lack both a keyboard and directional pad, such as the upcoming Nexus S. You could use the volume buttons for left/right control, the back button for jump, and the menu button for attack. I think that would work quite well.', 'timestamp': '1292024652027', 'permalink': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment\0751292024652027#c6467289971144187799', 'author': {'name': 'Anonymous', 'avatarUrl': 'http://img1.blogblog.com/img/blank.gif', 'profileUrl': ''}, 'displayTime': 'December 10, 2010 3:44 PM', 'deleteclass': 'item-control blog-admin pid-1313745510'}];
+      var msgs = {'loadMore': 'Load more...', 'loading': 'Loading...', 'loaded': 'No more!', 'addComment': 'Add comment', 'reply': 'Reply', 'delete': 'Delete'};
+      var config = {'blogId': '2127023973845776737', 'postId': '6798971062615480521', 'feed': 'http://replicaisland.blogspot.com/feeds/6798971062615480521/comments/default', 'authorName': 'Chris', 'authorUrl': 'http://www.blogger.com/profile/16079744366139636224', 'baseUri': 'http://www.blogger.com', 'maxThreadDepth': 2};
+
+// <![CDATA[
+      var cursor = null;
+      if (items && items.length > 0) {
+        cursor = parseInt(items[items.length - 1].timestamp) + 1;
+      }
+
+      var bodyFromEntry = function(entry) {
+        if (entry.gd$extendedProperty) {
+          for (var k in entry.gd$extendedProperty) {
+            if (entry.gd$extendedProperty[k].name == 'blogger.contentRemoved') {
+              return '<span class="deleted-comment">' + entry.content.$t + '</span>';
+            }
+          }
+        }
+        return entry.content.$t;
+      }
+
+      var parse = function(data) {
+        cursor = null;
+        var comments = [];
+        if (data && data.feed && data.feed.entry) {
+          for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
+            var comment = {};
+            // comment ID, parsed out of the original id format
+            var id = /blog-(\d+).post-(\d+)/.exec(entry.id.$t);
+            comment.id = id ? id[2] : null;
+            comment.body = bodyFromEntry(entry);
+            comment.timestamp = Date.parse(entry.published.$t) + '';
+            if (entry.author && entry.author.constructor === Array) {
+              var auth = entry.author[0];
+              if (auth) {
+                comment.author = {
+                  name: (auth.name ? auth.name.$t : undefined),
+                  profileUrl: (auth.uri ? auth.uri.$t : undefined),
+                  avatarUrl: (auth.gd$image ? auth.gd$image.src : undefined)
+                };
+              }
+            }
+            if (entry.link) {
+              if (entry.link[2]) {
+                comment.link = comment.permalink = entry.link[2].href;
+              }
+              if (entry.link[3]) {
+                var pid = /.*comments\/default\/(\d+)\?.*/.exec(entry.link[3].href);
+                if (pid && pid[1]) {
+                  comment.parentId = pid[1];
+                }
+              }
+            }
+            comment.deleteclass = 'item-control blog-admin';
+            if (entry.gd$extendedProperty) {
+              for (var k in entry.gd$extendedProperty) {
+                if (entry.gd$extendedProperty[k].name == 'blogger.itemClass') {
+                  comment.deleteclass += ' ' + entry.gd$extendedProperty[k].value;
+                } else if (entry.gd$extendedProperty[k].name == 'blogger.displayTime') {
+                  comment.displayTime = entry.gd$extendedProperty[k].value;
+                }
+              }
+            }
+            comments.push(comment);
+          }
+        }
+        return comments;
+      };
+
+      var paginator = function(callback) {
+        if (hasMore()) {
+          var url = config.feed + '?alt=json&v=2&orderby=published&reverse=false&max-results=50';
+          if (cursor) {
+            url += '&published-min=' + new Date(cursor).toISOString();
+          }
+          window.bloggercomments = function(data) {
+            var parsed = parse(data);
+            cursor = parsed.length < 50 ? null
+                : parseInt(parsed[parsed.length - 1].timestamp) + 1
+            callback(parsed);
+            window.bloggercomments = null;
+          }
+          url += '&callback=bloggercomments';
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = url;
+          document.getElementsByTagName('head')[0].appendChild(script);
+        }
+      };
+      var hasMore = function() {
+        return !!cursor;
+      };
+      var getMeta = function(key, comment) {
+        if ('iswriter' == key) {
+          var matches = !!comment.author
+              && comment.author.name == config.authorName
+              && comment.author.profileUrl == config.authorUrl;
+          return matches ? 'true' : '';
+        } else if ('deletelink' == key) {
+          return config.baseUri + '/delete-comment.g?blogID='
+               + config.blogId + '&postID=' + comment.id;
+        } else if ('deleteclass' == key) {
+          return comment.deleteclass;
+        }
+        return '';
+      };
+
+      var replybox = null;
+      var replyUrlParts = null;
+      var replyParent = undefined;
+
+      var onReply = function(commentId, domId) {
+        if (replybox == null) {
+          // lazily cache replybox, and adjust to suit this style:
+          replybox = document.getElementById('comment-editor');
+          if (replybox != null) {
+            replybox.height = '250px';
+            replybox.style.display = 'block';
+            replyUrlParts = replybox.src.split('#');
+          }
+        }
+        if (replybox && (commentId !== replyParent)) {
+          document.getElementById(domId).insertBefore(replybox, null);
+          replybox.src = replyUrlParts[0]
+              + (commentId ? '&parentID=' + commentId : '')
+              + '#' + replyUrlParts[1];
+          replyParent = commentId;
+        }
+      };
+
+      var hash = (window.location.hash || '#').substring(1);
+      var startThread, targetComment;
+      if (/^comment-form_/.test(hash)) {
+        startThread = hash.substring('comment-form_'.length);
+      } else if (/^c[0-9]+$/.test(hash)) {
+        targetComment = hash.substring(1);
+      }
+
+      // Configure commenting API:
+      var configJso = {
+        'maxDepth': config.maxThreadDepth
+      };
+      var provider = {
+        'id': config.postId,
+        'data': items,
+        'loadNext': paginator,
+        'hasMore': hasMore,
+        'getMeta': getMeta,
+        'onReply': onReply,
+        'rendered': true,
+        'initComment': targetComment,
+        'initReplyThread': startThread,
+        'config': configJso,
+        'messages': msgs
+      };
+
+      var render = function() {
+        if (window.goog && window.goog.comments) {
+          var holder = document.getElementById('comment-holder');
+          window.goog.comments.render(holder, provider);
+        }
+      };
+
+      // render now, or queue to render when library loads:
+      if (window.goog && window.goog.comments) {
+        render();
+      } else {
+        window.goog = window.goog || {};
+        window.goog.comments = window.goog.comments || {};
+        window.goog.comments.loadQueue = window.goog.comments.loadQueue || [];
+        window.goog.comments.loadQueue.push(render);
+      }
+    })();
+// ]]>
+</SCRIPT>
+
+<DIV id="comment-holder">
+<DIV id="bc_0_16C" kind="c">
+<DIV id="bc_0_16CT">
+<DIV id="bc_0_15T" class="comment-thread" kind="r" u="0" t="0">
+<OL id="bc_0_15TB">
+  <LI id="bc_0_0B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c9024976703668890369" class="comment-block">
+  <DIV id="bc_0_0M" class="comment-header" kind="m"><CITE class="user"><A href="http://www.blogger.com/profile/14462912880548662710" 
+  rel="nofollow">Andrex</A></CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1272924523881#c9024976703668890369" 
+  rel="nofollow">May 3, 2010 3:08 PM</A></SPAN></DIV>
+  <P id="bc_0_0MC" class="comment-content">Interesting. I would have thought 
+  that d-pad support would have been fairly trivial. But I guess that's just 
+  because I've been debugging purely in the emulator and not an actual device. 
+  I'd always been puzzled about how to do trackball movement "right", initially 
+  I would probably just done the opposite of what you did: map the trackball to 
+  d-pad specific code. :P<BR><BR>Great to see you're continuing to support RI 
+  and the RI engine post-release. Can we expect to see Replica Island 2 at I/O? 
+  ;)</P><SPAN id="bc_0_0MN" class="comment-actions secondary-text" kind="m"><A 
+  href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN class="item-control blog-admin pid-34714780"><A 
+  href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=9024976703668890369" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_0BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_0B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_1B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c1571568651242889535" class="comment-block">
+  <DIV id="bc_0_1M" class="comment-header" kind="m"><CITE class="user blog-author"><A 
+  href="http://www.blogger.com/profile/16079744366139636224" 
+  rel="nofollow">Chris</A></CITE><SPAN 
+  class="icon user blog-author"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1272930425176#c1571568651242889535" 
+  rel="nofollow">May 3, 2010 4:47 PM</A></SPAN></DIV>
+  <P id="bc_0_1MC" class="comment-content">The issue is that I want the game to 
+  have a single entry point for movement controls.  I want the game to see a 
+  single "directional pad", even if the device has no real dpad.  Only, in the 
+  initial implementation, the game was looking for a single trackball, so on 
+  devices that didn't have one, I emulated it.  <BR><BR>Now the game uses 
+  virtual buttons exposed by InputGameInterface, and the source of those buttons 
+  is unknown to the game engine.<BR><BR>No Replica 2 right away, I'm afraid.  
+  Still lots to do on Replica 1!</P><SPAN id="bc_0_1MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-191266870"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=1571568651242889535" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_1BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_1B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_2B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/anon36.png"></DIV>
+  <DIV id="c5397722102810481644" class="comment-block">
+  <DIV id="bc_0_2M" class="comment-header" kind="m"><CITE class="user"><A href="http://www.typhon4android.org/" 
+  rel="nofollow">Mike Leahy</A></CITE><SPAN class="icon user"></SPAN><SPAN 
+  class="datetime secondary-text"><A href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1272933878932#c5397722102810481644" 
+  rel="nofollow">May 3, 2010 5:44 PM</A></SPAN></DIV>
+  <P id="bc_0_2MC" class="comment-content">Yep, a very time consuming task. This 
+  is a large focus (control config &amp; abstraction) with the middleware, 
+  TyphonRT, I'm finally releasing shortly. It's taking a bit of time to resolve 
+  things as TyphonRT works across the desktop and Android. When factoring in a 
+  configuration system useful across the Android ecosystem including virtual 
+  control overlays and desktop configurations it's quite the 
+  task.<BR><BR>Without getting overly wordy I take a similar approach in 
+  defining generic input actions controls 1D (buttons), 2D &amp; 3D. This 
+  defines an "InputSet". The game engine components (entity system et al) of 
+  TyphonRT don't care about the physical input source. <BR><BR>Lots more glue 
+  and cool stuff involved as everything is XML configurable w/ resource string 
+  substitution on Android for action control descriptions, there is the concept 
+  of an "InputCalibration" which is loaded from an XML file with defaults and 
+  device family/model name filtering. "InputCalibration" provides for device 
+  specific scaling. An example is the N1 trackball vs optical trackball. For 3D 
+  cases scaling to ensure that rotation of a game entity when using touch input 
+  swiping across the G1 screen is the same as the N1, etc.<BR><BR>TyphonRT also 
+  provides a neutral event system and works with JInput, AWT, and Android. There 
+  are input filter components that can handle additional tasks such as tracking 
+  last time a button is pressed and even doing specific filtering for touch 
+  screens that are deficient (N1) in order to make virtual control overlays 
+  usable. <BR><BR>Seeing as I support all sorts of game controllers with axis 
+  and dpad input via JInput you bet I'm hankering for proper bluetooth support 
+  in Android as I've already got a controller event system that just needs to be 
+  hooked up.<BR><BR>Ok.. It's getting wordy / beyond wordy... heh.. Basically 
+  one can open a Pandora's box of sorts with a configurable config system w/ 
+  nice abstraction. Making it work across desktop and the entire Android 
+  ecosystem is no easy task.</P><SPAN id="bc_0_2MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-1229908169"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=5397722102810481644" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_2BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_2B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_3B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/anon36.png"></DIV>
+  <DIV id="c6399620576946363785" class="comment-block">
+  <DIV id="bc_0_3M" class="comment-header" kind="m"><CITE 
+  class="user">Anonymous</CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1273359557425#c6399620576946363785" 
+  rel="nofollow">May 8, 2010 3:59 PM</A></SPAN></DIV>
+  <P id="bc_0_3MC" class="comment-content">Im having trouble understanding how 
+  to use opengl with android. I know theres a lot of documentation for opengl 
+  and a lot of documentation for android, but I can't put the two together. I 
+  read on the google code section that you are planning to work on a skeleton 
+  which will be like a framework for games. Is that still planned?</P><SPAN id="bc_0_3MN" 
+  class="comment-actions secondary-text" kind="m"><A href="javascript:;" target="_self" 
+  kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-2090056823"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=6399620576946363785" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_3BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_3B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_4B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c2914094243762401276" class="comment-block">
+  <DIV id="bc_0_4M" class="comment-header" kind="m"><CITE class="user blog-author"><A 
+  href="http://www.blogger.com/profile/16079744366139636224" 
+  rel="nofollow">Chris</A></CITE><SPAN 
+  class="icon user blog-author"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1273363796827#c2914094243762401276" 
+  rel="nofollow">May 8, 2010 5:09 PM</A></SPAN></DIV>
+  <P id="bc_0_4MC" class="comment-content">Anonymous,<BR><BR>You can get OpenGL 
+  ES up and running on Android in just a few lines of code.  See the API demos 
+  that come with the SDK.  You don't need a whole game engine.</P><SPAN id="bc_0_4MN" 
+  class="comment-actions secondary-text" kind="m"><A href="javascript:;" target="_self" 
+  kind="i" o="r">Reply</A><SPAN class="item-control blog-admin pid-191266870"><A 
+  href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=2914094243762401276" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_4BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_4B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_5B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c7871250031453741382" class="comment-block">
+  <DIV id="bc_0_5M" class="comment-header" kind="m"><CITE class="user"><A href="http://www.blogger.com/profile/13407008816951592471" 
+  rel="nofollow">Gilead</A></CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1273782422912#c7871250031453741382" 
+  rel="nofollow">May 13, 2010 1:27 PM</A></SPAN></DIV>
+  <P id="bc_0_5MC" class="comment-content">Mike, you can connect BT controllers 
+  like JS1 to Android right now, see my story over @ StackOverflow :) 
+  http://stackoverflow.com/questions/2660968/</P><SPAN id="bc_0_5MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-1201779784"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=7871250031453741382" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_5BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_5B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_6B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c7541384026803866964" class="comment-block">
+  <DIV id="bc_0_6M" class="comment-header" kind="m"><CITE class="user"><A href="http://www.blogger.com/profile/14789510707956337658" 
+  rel="nofollow">Chuck</A></CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1274291518412#c7541384026803866964" 
+  rel="nofollow">May 19, 2010 10:51 AM</A></SPAN></DIV>
+  <P id="bc_0_6MC" class="comment-content">Chris,<BR>I am fairly new to Java and 
+  wanted to begin learning the language to develop applications on Android. 
+  After watching your video on the Android Dev website I am intrigued with game 
+  development. In your opinion, what should someone like myself learn in order 
+  to get into game development for Android? Is Java enough? Do I need to learn 
+  about Physics and other mathematics topics? Your opinion is appreciated. 
+  Thanks!</P><SPAN id="bc_0_6MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-348512611"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=7541384026803866964" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_6BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_6B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_7B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c4487083189187744838" class="comment-block">
+  <DIV id="bc_0_7M" class="comment-header" kind="m"><CITE class="user blog-author"><A 
+  href="http://www.blogger.com/profile/16079744366139636224" 
+  rel="nofollow">Chris</A></CITE><SPAN 
+  class="icon user blog-author"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1274292219502#c4487083189187744838" 
+  rel="nofollow">May 19, 2010 11:03 AM</A></SPAN></DIV>
+  <P id="bc_0_7MC" class="comment-content">@Chuck<BR><BR>If you're just starting 
+  out with Java and game development, I think it's a fine learning tool.  Just 
+  target something simple: a tetris clone, or sudoku, or whatever; something 
+  that you can accomplish while learning the language and platform.  Once you 
+  have a more solid foundation to build upon you can increase the complexity of 
+  your projects.<BR><BR>I think game design and programming language are pretty 
+  much orthogonal issues, so my advice is get comfortable with whatever language 
+  first (Java, sure, whatever) and then figure out what kind of games you want 
+  to make with it.  When you hit a wall related to the language (which, if 
+  you're just starting, won't be for a long while), consider another approach at 
+  that time.</P><SPAN id="bc_0_7MN" class="comment-actions secondary-text" kind="m"><A 
+  href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN class="item-control blog-admin pid-191266870"><A 
+  href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=4487083189187744838" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_7BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_7B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_8B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c4435626508460934593" class="comment-block">
+  <DIV id="bc_0_8M" class="comment-header" kind="m"><CITE class="user"><A href="http://www.blogger.com/profile/16239826672262783121" 
+  rel="nofollow">Hasoan</A></CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1274439408059#c4435626508460934593" 
+  rel="nofollow">May 21, 2010 3:56 AM</A></SPAN></DIV>
+  <P id="bc_0_8MC" class="comment-content">Just wanted to let you know that my 
+  samsung moment optical pad does not work at all wit the 1.3 update, which was 
+  kind of funny since the update specifically mentions fixing it... anyway, I'm 
+  running android 2.1 if that might make a difference.  Sorry if this is the 
+  wrong place for bugs.</P><SPAN id="bc_0_8MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-1528164061"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=4435626508460934593" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_8BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_8B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_9B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c1236881211484799083" class="comment-block">
+  <DIV id="bc_0_9M" class="comment-header" kind="m"><CITE class="user"><A href="http://www.blogger.com/profile/02123376927554957565" 
+  rel="nofollow">hearn</A></CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1274694147901#c1236881211484799083" 
+  rel="nofollow">May 24, 2010 2:42 AM</A></SPAN></DIV>
+  <P id="bc_0_9MC" class="comment-content">One issue I had with the game on the 
+  N1 is that with the touch-sensitive buttons it's very easy to get too 
+  aggressive with the trackball and accidentally press the home or back buttons. 
+  I don't think there's a good solution to this, chalk it up to fragmentation 
+  ;)<BR><BR>BTW what's up with all the workarounds and general noise in the app 
+  description and changelog for specific devices. If Cliq is "broken" and needs 
+  a "safe mode" can't you detect that at startup and handle it 
+  automatically?</P><SPAN id="bc_0_9MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-249790886"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=1236881211484799083" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_9BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_9B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_10B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/anon36.png"></DIV>
+  <DIV id="c7425296448312132927" class="comment-block">
+  <DIV id="bc_0_10M" class="comment-header" kind="m"><CITE 
+  class="user">Christian</CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1274802883601#c7425296448312132927" 
+  rel="nofollow">May 25, 2010 8:54 AM</A></SPAN></DIV>
+  <P id="bc_0_10MC" class="comment-content">Hello Chris, nice game. I’ve being 
+  playing it a little but mostly studying the source for a while. I’m trying to 
+  do a game as well. I’ve in mind a different concept but I’m planning it to 
+  have the same kind of 2d graphics. I’m trying to guess some stuff from opengl 
+  out of replica. I’m new at this though, and it’s a hard task to understand 
+  what all the code does. I’m sorry if this is not the right place to ask for 
+  this but could u post the stripped replica island code used as the FPS demo at 
+  Google's IO? What I’m basically trying to do right now is find out how you got 
+  opengl to work on the glsurfaceview ( .. android:id="@+id/glsurfaceview" ..), 
+  so that it can have other layers, or even be in a linearlayout to only use 
+  part of the screen). Could you please help me in this. I’ve being researching 
+  for a week now and every opengl example I’ve found uses the complete screen 
+  and not the XML. I’ve also found many similar questions regarding this on the 
+  web with no answers.</P><SPAN id="bc_0_10MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-1158469636"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=7425296448312132927" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_10BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_10B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_11B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/anon36.png"></DIV>
+  <DIV id="c6064883808576928157" class="comment-block">
+  <DIV id="bc_0_11M" class="comment-header" kind="m"><CITE class="user"><A href="http://androided.wordpress.com/" 
+  rel="nofollow">Thomas Sheppard</A></CITE><SPAN class="icon user"></SPAN><SPAN 
+  class="datetime secondary-text"><A href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1274837355629#c6064883808576928157" 
+  rel="nofollow">May 25, 2010 6:29 PM</A></SPAN></DIV>
+  <P id="bc_0_11MC" class="comment-content">Hey Chris, Sorry to pull the 
+  comments off topic but I had a question and didn't know where to ask it. I 
+  wanted to work on a level builder add on and noticed the level layouts seem to 
+  be defined in bin files in the raw resources directory. Is there an easy way 
+  of reading in these files? I wanted to gain an understanding of them to then 
+  be able to build them.<BR><BR>Thanks for the awesome code and 
+  posts.<BR><BR>Tom</P><SPAN id="bc_0_11MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-659541358"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=6064883808576928157" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_11BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_11B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_12B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c7813633265434832334" class="comment-block">
+  <DIV id="bc_0_12M" class="comment-header" kind="m"><CITE class="user blog-author"><A 
+  href="http://www.blogger.com/profile/16079744366139636224" 
+  rel="nofollow">Chris</A></CITE><SPAN 
+  class="icon user blog-author"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1274940546435#c7813633265434832334" 
+  rel="nofollow">May 26, 2010 11:09 PM</A></SPAN></DIV>
+  <P id="bc_0_12MC" class="comment-content">@Hasoan<BR><BR>Ok, thanks for the 
+  report.  Bug reports should probably go 
+  here:<BR><BR>http://code.google.com/p/replicaisland/issues/list<BR><BR>I'll 
+  double-check the Moment.  The last time I tested on that device was before 
+  their 2.1 upgrade.<BR><BR>@hearn<BR><BR>I actually have code in the game to 
+  ignore misclicks on the back and menu keys (I ignore clicks to those buttons 
+  within 400 ms of a trackball roll), but there's nothing I can do about the 
+  home key.  Sigh.<BR><BR>The Cliq is not the only broken device--there are a 
+  number of devices that use the same broken Qualcomm graphics driver.  It's 
+  just that the Cliq is (apparently, based on the volume of complaints) the 
+  device that sold the most in this category.  I actually do detect the Cliq at 
+  runtime and turn safe mode on, but it seems that there's maybe another model 
+  (the XT?) that I've missed in that test.<BR><BR>@ Christian<BR><BR>You might 
+  want to look at SpriteMethodTest--it's much simpler but functionally very 
+  similar to Replica 
+  Island:<BR><BR>http://code.google.com/p/apps-for-android/source/browse/#svn/trunk/SpriteMethodTest<BR><BR>The 
+  short answer to your question is: just make a layout with a GLSurfaceView in 
+  it in XML, give it an id the way you do any Layout element, then find it using 
+  that id in your Activity's onCreate() method and set a renderer.  Pretty 
+  simple.<BR><BR>@Thomas Sheppard <BR><BR>There's a thread about level building 
+  going on over at the development community 
+  list:<BR><BR>http://groups.google.com/group/replica-island-coding-community</P><SPAN 
+  id="bc_0_12MN" class="comment-actions secondary-text" kind="m"><A href="javascript:;" 
+  target="_self" kind="i" o="r">Reply</A><SPAN class="item-control blog-admin pid-191266870"><A 
+  href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=7813633265434832334" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_12BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_12B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_13B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/b36-rounded.png"></DIV>
+  <DIV id="c1734682573779356311" class="comment-block">
+  <DIV id="bc_0_13M" class="comment-header" kind="m"><CITE class="user"><A href="http://www.blogger.com/profile/02685726922532859012" 
+  rel="nofollow">Oren</A></CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1278437081589#c1734682573779356311" 
+  rel="nofollow">July 6, 2010 10:24 AM</A></SPAN></DIV>
+  <P id="bc_0_13MC" class="comment-content">You wrote that the input interface 
+  code can be reused. I'm new to Android, and I've been wondering about this 
+  aspect. There is no jar to include - from what I saw, only way for code reuse 
+  is intents. Am I missing something? should I copy the InputInterface code to 
+  my project?</P><SPAN id="bc_0_13MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-1336301958"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=1734682573779356311" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_13BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_13B_box" class="comment-replybox-single"></DIV></LI>
+  <LI id="bc_0_14B" class="comment" kind="b">
+  <DIV class="avatar-image-container"><IMG src="Control%20Configuration%20and%20Abstraction_files/anon36.png"></DIV>
+  <DIV id="c6467289971144187799" class="comment-block">
+  <DIV id="bc_0_14M" class="comment-header" kind="m"><CITE 
+  class="user">Anonymous</CITE><SPAN class="icon user"></SPAN><SPAN class="datetime secondary-text"><A 
+  href="http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html?showComment=1292024652027#c6467289971144187799" 
+  rel="nofollow">December 10, 2010 3:44 PM</A></SPAN></DIV>
+  <P id="bc_0_14MC" class="comment-content">I'd like to see it possible to map 
+  the volume, search, back, and menu buttons, since they aren't used in the 
+  game. Because these buttons do other actions as well as what they are assigned 
+  to, they are impossible to use in the game. Also, I think the pause button 
+  should be reassignable.<BR><BR>This would make the game more playable on 
+  devices that lack both a keyboard and directional pad, such as the upcoming 
+  Nexus S. You could use the volume buttons for left/right control, the back 
+  button for jump, and the menu button for attack. I think that would work quite 
+  well.</P><SPAN id="bc_0_14MN" class="comment-actions secondary-text" 
+  kind="m"><A href="javascript:;" target="_self" kind="i" o="r">Reply</A><SPAN 
+  class="item-control blog-admin pid-1313745510"><A href="http://www.blogger.com/delete-comment.g?blogID=2127023973845776737&amp;postID=6467289971144187799" 
+  target="_self" o="d">Delete</A></SPAN></SPAN></DIV>
+  <DIV id="bc_0_14BR" class="comment-replies"></DIV>
+  <DIV id="bc_0_14B_box" class="comment-replybox-single"></DIV></LI></OL>
+<DIV id="bc_0_15I" class="continue" kind="ci"><A href="javascript:;" target="_self">Add 
+comment</A></DIV>
+<DIV id="bc_0_15T_box" class="comment-replybox-thread"></DIV>
+<DIV id="bc_0_15L" class="loadmore loaded" kind="rb"><A href="javascript:;" 
+target="_self">Load more...</A></DIV></DIV></DIV></DIV></DIV></DIV>
+<P class="comment-footer">
+<DIV class="comment-form"><A name="comment-form"></A>
+<P></P><A id="comment-editor-src" href="http://www.blogger.com/comment-iframe.g?blogID=2127023973845776737&amp;postID=6798971062615480521"></A>
+<IFRAME id="comment-editor" class="blogger-iframe-colorize blogger-comment-from-post" 
+height="410" src="Control%20Configuration%20and%20Abstraction_files/comment-iframe.htm" 
+frameBorder="0" width="100%" allowTransparency="true" 
+name="comment-editor"></IFRAME>
+<SCRIPT type="text/javascript" src="Control%20Configuration%20and%20Abstraction_files/2166244152-comment_from_post_iframe.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+      BLOG_CMT_createIframe('http://www.blogger.com/rpc_relay.html', '08754581965925578933');
+    </SCRIPT>
+</DIV>
+<P></P>
+<DIV id="backlinks-container">
+<DIV id="Blog1_backlinks-container"></DIV></DIV></DIV></DIV></DIV></DIV><!-- google_ad_section_end -->
+</DIV>
+<DIV id="blog-pager" class="blog-pager"><SPAN id="blog-pager-newer-link"><A id="Blog1_blog-pager-newer-link" 
+class="blog-pager-newer-link" title="Newer Post" href="http://replicaisland.blogspot.de/2010/06/replica-island-passes-million-installs.html">Newer 
+Post</A></SPAN><SPAN id="blog-pager-older-link"><A id="Blog1_blog-pager-older-link" 
+class="blog-pager-older-link" title="Older Post" href="http://replicaisland.blogspot.de/2010/04/design-post-mortem-three-mistakes.html">Older 
+Post</A></SPAN><A class="home-link" 
+href="http://replicaisland.blogspot.de/">Home</A></DIV>
+<DIV class="clear"></DIV>
+<DIV class="post-feeds">
+<DIV class="feed-links">Subscribe to:<A class="feed-link" href="http://replicaisland.blogspot.com/feeds/6798971062615480521/comments/default" 
+type="application/atom+xml" target="_blank">Post Comments (Atom)</A></DIV></DIV>
+</DIV></DIV></DIV>
+<DIV id="sidebar-wrapper">
+<DIV id="sidebar" class="sidebar section">
+<DIV id="Profile1" class="widget Profile">
+<H2>About This Blog</H2>
+<DIV class="widget-content">
+<DL class="profile-datablock">
+  <DT class="profile-data"><A style='background-image: url("//www.blogger.com/img/logo-16.png");' 
+  class="profile-name-link" href="http://www.blogger.com/profile/16079744366139636224" 
+  rel="author">Chris</A></DT>
+  <DD class="profile-textblock">A development diary for <A href="http://www.replicaisland.net/">Replica 
+  Island</A>, a 2D side-scrolling platformer for Android devices.  Now I run a 
+  game studio called <A href="http://robotinvader.com/">Robot Invader</A>.  Like 
+  the rest of the world, I'm <A href="http://twitter.com/#!/c_pruett">on twitter 
+  too.</A></DD></DL><A class="profile-link" href="http://www.blogger.com/profile/16079744366139636224" 
+rel="author">View my complete profile</A>
+<DIV class="clear"></DIV><SPAN class="widget-item-control"><SPAN class="item-control blog-admin">
+<A class="quickedit" title="Edit" onclick='return _WidgetManager._PopupConfig(document.getElementById("Profile1"));' 
+href="http://www.blogger.com/rearrange?blogID=2127023973845776737&amp;widgetType=Profile&amp;widgetId=Profile1&amp;action=editWidget&amp;sectionId=sidebar" 
+target="configProfile1"><IMG alt="" src="Control%20Configuration%20and%20Abstraction_files/icon18_wrench_allbkg.png" 
+width="18" height="18"></A></SPAN></SPAN>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="CustomSearch1" class="widget CustomSearch">
+<H2 class="title">Search This Blog</H2>
+<DIV class="widget-content">
+<DIV id="CustomSearch1_form"><SPAN class="cse-status">Loading...</SPAN></DIV>
+</DIV>
+<STYLE type="text/css">
+      #uds-searchControl .gs-result .gs-title,
+      #uds-searchControl .gs-result .gs-title *,
+      #uds-searchControl .gsc-results .gsc-trailing-more-results,
+      #uds-searchControl .gsc-results .gsc-trailing-more-results * {
+        color:#5588aa;
+      }
+
+      #uds-searchControl .gs-result .gs-title a:visited,
+      #uds-searchControl .gs-result .gs-title a:visited * {
+        color:#999999;
+      }
+
+      #uds-searchControl .gs-relativePublishedDate,
+      #uds-searchControl .gs-publishedDate {
+        color: #999999;
+      }
+
+      #uds-searchControl .gs-result a.gs-visibleUrl,
+      #uds-searchControl .gs-result .gs-visibleUrl {
+        color: #cc6600;
+      }
+
+      #uds-searchControl .gsc-results {
+        border-color: #cccccc;
+        background-color: #ffffff;
+      }
+
+      #uds-searchControl .gsc-tabhActive {
+        border-color: #cccccc;
+        border-top-color: #cc6600;
+        background-color: #ffffff;
+        color: #333333;
+      }
+
+      #uds-searchControl .gsc-tabhInactive {
+        border-color: #cccccc;
+        background-color: transparent;
+        color: #5588aa;
+      }
+
+      #uds-searchClearResults {
+        border-color: #cccccc;
+      }
+
+      #uds-searchClearResults:hover {
+        border-color: #cc6600;
+      }
+
+      #uds-searchControl .gsc-cursor-page {
+        color: #5588aa;
+      }
+
+      #uds-searchControl .gsc-cursor-current-page {
+        color: #333333;
+      }
+    </STYLE>
+
+<DIV class="clear"></DIV><SPAN class="widget-item-control"><SPAN class="item-control blog-admin">
+<A class="quickedit" title="Edit" onclick='return _WidgetManager._PopupConfig(document.getElementById("CustomSearch1"));' 
+href="http://www.blogger.com/rearrange?blogID=2127023973845776737&amp;widgetType=CustomSearch&amp;widgetId=CustomSearch1&amp;action=editWidget&amp;sectionId=sidebar" 
+target="configCustomSearch1"><IMG alt="" src="Control%20Configuration%20and%20Abstraction_files/icon18_wrench_allbkg.png" 
+width="18" height="18"></A></SPAN></SPAN>
+<DIV class="clear"></DIV></DIV>
+<DIV id="LinkList1" class="widget LinkList">
+<H2>Related Links</H2>
+<DIV class="widget-content">
+<UL>
+  <LI><A href="http://replicaisland.net/">Replica Island Home</A></LI>
+  <LI><A href="http://code.google.com/p/replicaisland/">Source 
+  Repository</A></LI>
+  <LI><A 
+  href="http://groups.google.com/group/replica-island-coding-community">Coding 
+  Community</A></LI>
+  <LI><A href="http://code.google.com/p/replicaisland/issues/entry">Submit a 
+  Bug!</A></LI></UL>
+<DIV class="clear"></DIV><SPAN class="widget-item-control"><SPAN class="item-control blog-admin">
+<A class="quickedit" title="Edit" onclick='return _WidgetManager._PopupConfig(document.getElementById("LinkList1"));' 
+href="http://www.blogger.com/rearrange?blogID=2127023973845776737&amp;widgetType=LinkList&amp;widgetId=LinkList1&amp;action=editWidget&amp;sectionId=sidebar" 
+target="configLinkList1"><IMG alt="" src="Control%20Configuration%20and%20Abstraction_files/icon18_wrench_allbkg.png" 
+width="18" height="18"></A></SPAN></SPAN>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="Label1" class="widget Label">
+<H2>Labels</H2>
+<DIV class="widget-content list-label-widget-content">
+<UL>
+  <LI><A dir="ltr" href="http://replicaisland.blogspot.de/search/label/Android%20Market">Android 
+  Market</A><SPAN dir="ltr">(2)</SPAN></LI>
+  <LI><A dir="ltr" href="http://replicaisland.blogspot.de/search/label/code%20design">code 
+  design</A><SPAN dir="ltr">(10)</SPAN></LI>
+  <LI><A dir="ltr" 
+  href="http://replicaisland.blogspot.de/search/label/coverage">coverage</A>
+  <SPAN dir="ltr">(1)</SPAN></LI>
+  <LI><A dir="ltr" href="http://replicaisland.blogspot.de/search/label/game%20design">game 
+  design</A><SPAN dir="ltr">(7)</SPAN></LI>
+  <LI><A dir="ltr" href="http://replicaisland.blogspot.de/search/label/game%20industry">game 
+  industry</A><SPAN dir="ltr">(1)</SPAN></LI>
+  <LI><A dir="ltr" 
+  href="http://replicaisland.blogspot.de/search/label/media">media</A><SPAN dir="ltr">(2)</SPAN>
+  </LI>
+  <LI><A dir="ltr" href="http://replicaisland.blogspot.de/search/label/targeting%20Android">targeting 
+  Android</A><SPAN dir="ltr">(10)</SPAN></LI>
+  <LI><A dir="ltr" href="http://replicaisland.blogspot.de/search/label/Xperia%20PLAY">Xperia 
+  PLAY</A><SPAN dir="ltr">(1)</SPAN></LI></UL>
+<DIV class="clear"></DIV><SPAN class="widget-item-control"><SPAN class="item-control blog-admin">
+<A class="quickedit" title="Edit" onclick='return _WidgetManager._PopupConfig(document.getElementById("Label1"));' 
+href="http://www.blogger.com/rearrange?blogID=2127023973845776737&amp;widgetType=Label&amp;widgetId=Label1&amp;action=editWidget&amp;sectionId=sidebar" 
+target="configLabel1"><IMG alt="" src="Control%20Configuration%20and%20Abstraction_files/icon18_wrench_allbkg.png" 
+width="18" height="18"></A></SPAN></SPAN>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="BlogArchive1" class="widget BlogArchive">
+<H2>Blog Archive</H2>
+<DIV class="widget-content">
+<DIV id="ArchiveList">
+<DIV id="BlogArchive1_ArchiveList">
+<UL class="hierarchy">
+  <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+  <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" href="http://replicaisland.blogspot.de/search?updated-min=2011-01-01T00:00:00-08:00&amp;updated-max=2012-01-01T00:00:00-08:00&amp;max-results=2">2011</A>
+  <SPAN dir="ltr" class="post-count">(2)</SPAN>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2011_07_01_archive.html">July</A>
+    <SPAN dir="ltr" class="post-count">(1)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2011/07/want-to-change-game-industry-support.html">Want 
+      to Change the Game Industry?  Support the Xpe...</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2011_01_01_archive.html">January</A>
+    <SPAN dir="ltr" class="post-count">(1)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2011/01/replica-island-updated.html">Replica 
+      Island Updated</A></LI></UL></LI></UL></LI></UL>
+<UL class="hierarchy">
+  <LI class="archivedate expanded"><A class="toggle" href="javascript:void(0)">
+  <SPAN class="zippy toggle-open">▼&nbsp;</SPAN></A><A class="post-count-link" 
+  href="http://replicaisland.blogspot.de/search?updated-min=2010-01-01T00:00:00-08:00&amp;updated-max=2011-01-01T00:00:00-08:00&amp;max-results=17">2010</A>
+  <SPAN dir="ltr" class="post-count">(17)</SPAN>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2010_12_01_archive.html">December</A>
+    <SPAN dir="ltr" class="post-count">(1)</SPAN>
+    <UL class="posts">
+      <LI><A 
+      href="http://replicaisland.blogspot.de/2010/12/hot-failure.html">Hot 
+      Failure</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2010_11_01_archive.html">November</A>
+    <SPAN dir="ltr" class="post-count">(3)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2010/11/building-reflective-object-system-in-c.html">Building 
+      a Reflective Object System in C++</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/11/leveraging-java-and-c-for-hybrid-games.html">Leveraging 
+      Java and C++ for Hybrid Games</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/11/game-object-construction-rabbit-hole.html">Game 
+      Object Construction Rabbit Hole</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2010_09_01_archive.html">September</A>
+    <SPAN dir="ltr" class="post-count">(1)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2010/09/long-time-no-see.html">Long 
+      Time, No See</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2010_06_01_archive.html">June</A>
+    <SPAN dir="ltr" class="post-count">(1)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2010/06/replica-island-passes-million-installs.html">Replica 
+      Island Passes a Million Installs</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate expanded"><A class="toggle" 
+    href="javascript:void(0)"><SPAN class="zippy toggle-open">▼&nbsp;</SPAN></A>
+    <A class="post-count-link" href="http://replicaisland.blogspot.de/2010_05_01_archive.html">May</A>
+    <SPAN dir="ltr" class="post-count">(1)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2010/05/control-configuration-and-abstraction.html">Control 
+      Configuration and Abstraction</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2010_04_01_archive.html">April</A>
+    <SPAN dir="ltr" class="post-count">(3)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2010/04/design-post-mortem-three-mistakes.html">Design 
+      Post-Mortem: Three Mistakes</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/04/replica-island-one-month-on.html">Replica 
+      Island: One Month On</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/04/my-new-favorite-user-feedback.html">My 
+      New Favorite User Feedback</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2010_03_01_archive.html">March</A>
+    <SPAN dir="ltr" class="post-count">(3)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2010/03/replica-island-user-comments-are.html">Replica 
+      Island User Comments Are Hilarious</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/03/design-post-mortem-possession-orb.html">Design 
+      Post-Mortem: The Possession Orb</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/03/replica-island-released.html">Replica 
+      Island Released!</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2010_01_01_archive.html">January</A>
+    <SPAN dir="ltr" class="post-count">(4)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2010/01/fragmentation-more-like-fragmentawesome.html">Fragmentation? 
+       More like Fragmentawesome.</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/01/elusive-perfect-platformer-camera.html">The 
+      Elusive Perfect Platformer Camera</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/01/game-play-video.html">Game 
+      Play Video</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2010/01/tuning-with-metrics-redux.html">Tuning 
+      With Metrics Redux</A></LI></UL></LI></UL></LI></UL>
+<UL class="hierarchy">
+  <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+  <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" href="http://replicaisland.blogspot.de/search?updated-min=2009-01-01T00:00:00-08:00&amp;updated-max=2010-01-01T00:00:00-08:00&amp;max-results=11">2009</A>
+  <SPAN dir="ltr" class="post-count">(11)</SPAN>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2009_12_01_archive.html">December</A>
+    <SPAN dir="ltr" class="post-count">(1)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2009/12/some-screenshots.html">Some 
+      Screenshots</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2009_11_01_archive.html">November</A>
+    <SPAN dir="ltr" class="post-count">(3)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2009/11/one-of-concerns-that-i-occasionally-run.html">It's 
+      Not the Size That Counts</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2009/11/tuning-play-with-automatic-and.html">Tuning 
+      Play With Automatic and Anonymous Player Me...</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2009/11/android-game-development-resources.html">Android 
+      Game Development Resources</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2009_10_01_archive.html">October</A>
+    <SPAN dir="ltr" class="post-count">(2)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2009/10/main-loop-as-graph-traversal.html">The 
+      Main Loop as a Graph Traversal</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2009/10/rendering-with-two-threads.html">Rendering 
+      With Two Threads</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2009_09_01_archive.html">September</A>
+    <SPAN dir="ltr" class="post-count">(2)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2009/09/why-android-flies.html">Why 
+      Android Flies</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2009/09/aggregate-objects-via-components.html">Aggregate 
+      Objects via Components</A></LI></UL></LI></UL>
+  <UL class="hierarchy">
+    <LI class="archivedate collapsed"><A class="toggle" href="javascript:void(0)">
+    <SPAN class="zippy">►&nbsp;        </SPAN></A><A class="post-count-link" 
+    href="http://replicaisland.blogspot.de/2009_08_01_archive.html">August</A>
+    <SPAN dir="ltr" class="post-count">(3)</SPAN>
+    <UL class="posts">
+      <LI><A href="http://replicaisland.blogspot.de/2009/08/detecting-and-responding-to-dynamic.html">Detecting 
+      and responding to dynamic collisions.</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2009/08/fast-and-accurate-2d-collision.html">Fast 
+      and accurate 2D collision detection with line...</A></LI>
+      <LI><A href="http://replicaisland.blogspot.de/2009/08/replica-island-development-blog.html">Replica 
+      Island Development Blog!</A></LI></UL></LI></UL></LI></UL></DIV></DIV>
+<DIV class="clear"></DIV><SPAN class="widget-item-control"><SPAN class="item-control blog-admin">
+<A class="quickedit" title="Edit" onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' 
+href="http://www.blogger.com/rearrange?blogID=2127023973845776737&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget&amp;sectionId=sidebar" 
+target="configBlogArchive1"><IMG alt="" src="Control%20Configuration%20and%20Abstraction_files/icon18_wrench_allbkg.png" 
+width="18" height="18"></A></SPAN></SPAN>
+<DIV class="clear"></DIV></DIV></DIV></DIV></DIV><!-- spacer for skins that want sidebar and main to be the same height-->
+<DIV class="clear">&nbsp;</DIV></DIV><!-- end content-wrapper -->
+<DIV id="footer-wrapper">
+<DIV id="footer" class="footer section">
+<DIV id="Followers1" class="widget Followers">
+<H2 class="title">Followers</H2>
+<DIV class="widget-content">
+<DIV id="Followers1-wrapper">
+<DIV style="margin-right: 2px;">
+<SCRIPT type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </SCRIPT>
+
+<SCRIPT type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </SCRIPT>
+
+<SCRIPT type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/2127023973845776737/posts/default/6798971062615480521";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/2127023973845776737/6798971062615480521/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 6798971062615480521
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/2127023973845776737/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/2127023973845776737/comments/default";
+          
+          holder.currentBlogUrl = "http://replicaisland.blogspot.com/";
+          holder.currentBlogId = "2127023973845776737";
+        
+        return holder;
+      });
+    }
+  </SCRIPT>
+
+<SCRIPT type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </SCRIPT>
+
+<DIV style="width: 100%;" id="div-110bwyoqov8bu"></DIV>
+<SCRIPT type="text/javascript">
+    var skin = {};
+    skin['FACE_SIZE'] = '32';
+    skin['HEIGHT'] = "260";
+    skin['TITLE'] = "Followers";
+    skin['BORDER_COLOR'] = "transparent";
+    skin['ENDCAP_BG_COLOR'] = "transparent";
+    skin['ENDCAP_TEXT_COLOR'] = "#666666";
+    skin['ENDCAP_LINK_COLOR'] = "#5588aa";
+    skin['ALTERNATE_BG_COLOR'] = "transparent";
+    
+    skin['CONTENT_BG_COLOR'] = "transparent";
+    skin['CONTENT_LINK_COLOR'] = "#5588aa";
+    skin['CONTENT_TEXT_COLOR'] = "#666666";
+    skin['CONTENT_SECONDARY_LINK_COLOR'] = "#5588aa";
+    skin['CONTENT_SECONDARY_TEXT_COLOR'] = "#999999";
+    skin['CONTENT_HEADLINE_COLOR'] = "#cc6600";
+    skin['FONT_FACE'] = "normal normal 99% Verdana, sans-serif";
+    google.friendconnect.container.setParentUrl("/");
+    google.friendconnect.container["renderMembersGadget"](
+    {id: "div-110bwyoqov8bu",
+     height: 260,
+     
+     
+     
+     site: "08754581965925578933",
+     
+     locale: 'en' },
+     skin);
+  </SCRIPT>
+</DIV></DIV>
+<DIV class="clear"></DIV><SPAN class="widget-item-control"><SPAN class="item-control blog-admin">
+<A class="quickedit" title="Edit" onclick='return _WidgetManager._PopupConfig(document.getElementById("Followers1"));' 
+href="http://www.blogger.com/rearrange?blogID=2127023973845776737&amp;widgetType=Followers&amp;widgetId=Followers1&amp;action=editWidget&amp;sectionId=footer" 
+target="configFollowers1"><IMG alt="" src="Control%20Configuration%20and%20Abstraction_files/icon18_wrench_allbkg.png" 
+width="18" height="18"></A></SPAN></SPAN>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="Text1" class="widget Text">
+<H2 class="title">The Fine Print</H2>
+<DIV class="widget-content">
+<DIV><BR></DIV>Naturally, all of the opinions expressed here are mine and not 
+necessarily those of my employer, Google Inc.  So there.</DIV>
+<DIV class="clear"></DIV><SPAN class="widget-item-control"><SPAN class="item-control blog-admin">
+<A class="quickedit" title="Edit" onclick='return _WidgetManager._PopupConfig(document.getElementById("Text1"));' 
+href="http://www.blogger.com/rearrange?blogID=2127023973845776737&amp;widgetType=Text&amp;widgetId=Text1&amp;action=editWidget&amp;sectionId=footer" 
+target="configText1"><IMG alt="" src="Control%20Configuration%20and%20Abstraction_files/icon18_wrench_allbkg.png" 
+width="18" height="18"></A></SPAN></SPAN>
+<DIV class="clear"></DIV></DIV></DIV></DIV></DIV></DIV><!-- end outer-wrapper --><!-- Google Analytics -->
+<SCRIPT type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10038918-2");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>
+
+<SCRIPT type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('widgetJsBefore');
+</SCRIPT>
+
+<SCRIPT type="text/javascript" src="Control%20Configuration%20and%20Abstraction_files/218067977-widgets.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Control%20Configuration%20and%20Abstraction_files/jsapi.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+if (typeof(BLOG_attachCsiOnload) != 'undefined' && BLOG_attachCsiOnload != null) { window['blogger_templates_experiment_id'] = "templatesV1";window['blogger_blog_id'] = '2127023973845776737';BLOG_attachCsiOnload('item_'); }_WidgetManager._Init('http://www.blogger.com/rearrange?blogID\x3d2127023973845776737','http://replicaisland.blogspot.de/2010/05/control-configuration-and-abstraction.html','2127023973845776737');
+_WidgetManager._SetPageActionUrl('http://www.blogger.com/display?blogID\x3d2127023973845776737','APq4FmBGlogP7PG89BDMGEFMfGxvuwzP3IBSyenGs0f4jt8JnVPTmeqRn0mV8W9ggjY6COUQevc-bHXCqcRg8q1Ehh61yZ-7mF-Gky_EKpbE9S5Vlj8w_6c\x3d','AOuZoY6zqQLuSPLoweNiFAosLefnfy-34g:1339819966460');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '2127023973845776737', 'bloggerUrl': 'http://www.blogger.com', 'title': 'Replica Island', 'pageType': 'item', 'url': 'http://replicaisland.blogspot.de/2010/05/control-configuration-and-abstraction.html', 'canonicalUrl': 'http://replicaisland.blogspot.com/2010/05/control-configuration-and-abstraction.html', 'canonicalHomepageUrl': 'http://replicaisland.blogspot.com/', 'homepageUrl': 'http://replicaisland.blogspot.de/', 'blogspotFaviconUrl': 'http://replicaisland.blogspot.de/favicon.ico', 'enabledCommentProfileImages': true, 'adultContent': false, 'analyticsAccountNumber': '', 'searchLabel': '', 'searchQuery': '', 'pageName': 'Control Configuration and Abstraction', 'pageTitle': 'Replica Island: Control Configuration and Abstraction', 'encoding': 'UTF-8', 'locale': 'en', 'isPrivate': false, 'isMobile': false, 'mobileClass': '', 'isPrivateBlog': false, 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42Replica Island - Atom\42 href\75\42http://replicaisland.blogspot.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42Replica Island - RSS\42 href\75\42http://replicaisland.blogspot.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42Replica Island - Atom\42 href\75\42http://www.blogger.com/feeds/2127023973845776737/posts/default\42 /\76\n\74link rel\75\42EditURI\42 type\75\42application/rsd+xml\42 title\75\42RSD\42 href\75\42http://www.blogger.com/rsd.g?blogID\0752127023973845776737\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42Replica Island - Atom\42 href\75\42http://replicaisland.blogspot.com/feeds/6798971062615480521/comments/default\42 /\76\n', 'meTag': '', 'openIdOpTag': '', 'imageSrcTag': '', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var b\75window,e\75\42jstiming\42,f\75\42tick\42;(function(){function c(a){this.t\75{};this.tick\75function(a,c,d){d\75void 0!\75d?d:(new Date).getTime();this.t[a]\75[d,c]};this[f](\42start\42,null,a)}var a\75new c;b.jstiming\75{Timer:c,load:a};if(b.performance\46\46b.performance.timing){var d\75b.performance.timing,a\75b[e].load,g\75d.navigationStart,d\75d.responseStart;0\74g\46\46d\76\75g\46\46(a[f](\42_wtsrt\42,void 0,g),a[f](\42wtsrt_\42,\42_wtsrt\42,d))}try{a\75null,b.chrome\46\46b.chrome.csi\46\46(a\75Math.floor(b.chrome.csi().pageT)),null\75\75a\46\46b.gtbExternal\46\46(a\75b.gtbExternal.pageT()),null\75\75a\46\46b.external\46\46\n(a\75b.external.pageT),a\46\46(b[e].pt\75a)}catch(j){}})();b.tickAboveFold\75function(c){var a\0750;if(c.offsetParent){do a+\75c.offsetTop;while(c\75c.offsetParent)}c\75a;750\76\75c\46\46b[e].load[f](\42aft\42)};var h\75!1;function i(){h||(h\75!0,b[e].load[f](\42firstScrollTime\42))}b.addEventListener?b.addEventListener(\42scroll\42,i,!1):b.attachEvent(\42onscroll\42,i);\n })();\74/script\076', 'mobileHeadScript': '', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/5fb5d2cbc93cfe93'}}, {'name': 'skin', 'data': {'vars': {'sidebartextcolor': '#666666', 'linkcolor': '#5588aa', 'visitedlinkcolor': '#999999', 'textcolor': '#333333', 'headerfont': 'normal normal 78% \47Trebuchet MS\47,Trebuchet,Arial,Verdana,Sans-serif', 'pagetitlefont': 'normal normal 200% Verdana, sans-serif', 'bgcolor': '#ffffff', 'descriptioncolor': '#999999', 'titlecolor': '#cc6600', 'bordercolor': '#cccccc', 'postfooterfont': 'normal normal 78% \47Trebuchet MS\47, Trebuchet, Arial, Verdana, Sans-serif', 'pagetitlecolor': '#666666', 'bodyfont': 'normal normal 99% Verdana, sans-serif', 'endSide': 'right', 'startSide': 'left', 'descriptionfont': 'normal normal 78% \47Trebuchet MS\47, Trebuchet, Arial, Verdana, Sans-serif', 'sidebarcolor': '#999999'}, 'override': ''}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '/?view\75classic'}, 'flipcard': {'name': 'flipcard', 'url': '/?view\75flipcard'}, 'magazine': {'name': 'magazine', 'url': '/?view\75magazine'}, 'mosaic': {'name': 'mosaic', 'url': '/?view\75mosaic'}, 'sidebar': {'name': 'sidebar', 'url': '/?view\75sidebar'}, 'snapshot': {'name': 'snapshot', 'url': '/?view\75snapshot'}, 'timeslide': {'name': 'timeslide', 'url': '/?view\75timeslide'}}}]);
+_WidgetManager._RegisterWidget('_FollowersView', new _WidgetInfo('Followers1', 'footer', null, document.getElementById('Followers1'), {'title': 'Followers', 'codeSnippet': '\74script type\75\42text/javascript\42\76\n        if (!window.google || !google.friendconnect) {\n          document.write(\47\74script type\75\42text/javascript\42\47 +\n              \47src\75\42http://www.google.com/friendconnect/script/friendconnect.js\42\76\47 +\n              \47\74/scr\47 + \47ipt\76\47);\n        }\n      \74/script\76\n\74script type\75\42text/javascript\42\76\n      if (!window.registeredBloggerCallbacks) {\n        window.registeredBloggerCallbacks \75 true;\n\n        \n\n        \n        gadgets.rpc.register(\47requestReload\47, function() {\n          document.location.reload();\n        });\n\n        \n        gadgets.rpc.register(\47requestSignOut\47, function(siteId) {\n          \n          google.friendconnect.container.openSocialSiteId \75 siteId;\n          google.friendconnect.requestSignOut();\n        });\n      }\n    \74/script\76\n\74script type\75\42text/javascript\42\76\n    \n    function registerGetBlogUrls() {\n      gadgets.rpc.register(\47getBlogUrls\47, function() {\n        var holder \75 {};\n        \n          \n            \n            \n              holder.currentPost \75 \42http://www.blogger.com/feeds/2127023973845776737/posts/default/6798971062615480521\42;\n            \n            \n            \n              holder.currentComments \75 \42http://www.blogger.com/feeds/2127023973845776737/6798971062615480521/comments/default\42;\n            \n            holder.currentPostUrl \75 \42\42;\n            holder.currentPostId \75 6798971062615480521\n          \n          \n          \n            holder.postFeed \75 \42http://www.blogger.com/feeds/2127023973845776737/posts/default\42;\n          \n          \n          \n            holder.commentFeed \75 \42http://www.blogger.com/feeds/2127023973845776737/comments/default\42;\n          \n          holder.currentBlogUrl \75 \42http://replicaisland.blogspot.com/\42;\n          holder.currentBlogId \75 \0422127023973845776737\42;\n        \n        return holder;\n      });\n    }\n  \74/script\76\n\74script type\75\42text/javascript\42\76\n  if (!window.registeredCommonBloggerCallbacks) {\n    window.registeredCommonBloggerCallbacks \75 true;\n\n    gadgets.rpc.register(\47resize_iframe\47, function(height) {\n      var el \75 document.getElementById(this[\47f\47]);\n      if (el) {\n        el.style.height \75 height + \47px\47;\n      }\n    });\n\n    \n    gadgets.rpc.register(\47set_pref\47, function() {});\n\n    registerGetBlogUrls();\n  }\n  \74/script\76\n\74div id\75\42div-d3jgwmsf81dm\42 style\75\42width: 100%; \42\76\74/div\76\n\74script type\75\42text/javascript\42\76\n    var skin \75 {};\n    skin[\47FACE_SIZE\47] \75 \04732\47;\n    skin[\47HEIGHT\47] \75 \042260\42;\n    skin[\47TITLE\47] \75 \42Followers\42;\n    skin[\47BORDER_COLOR\47] \75 \42transparent\42;\n    skin[\47ENDCAP_BG_COLOR\47] \75 \42transparent\42;\n    skin[\47ENDCAP_TEXT_COLOR\47] \75 \42#666666\42;\n    skin[\47ENDCAP_LINK_COLOR\47] \75 \42#5588aa\42;\n    skin[\47ALTERNATE_BG_COLOR\47] \75 \42transparent\42;\n    \n    skin[\47CONTENT_BG_COLOR\47] \75 \42transparent\42;\n    skin[\47CONTENT_LINK_COLOR\47] \75 \42#5588aa\42;\n    skin[\47CONTENT_TEXT_COLOR\47] \75 \42#666666\42;\n    skin[\47CONTENT_SECONDARY_LINK_COLOR\47] \75 \42#5588aa\42;\n    skin[\47CONTENT_SECONDARY_TEXT_COLOR\47] \75 \42#999999\42;\n    skin[\47CONTENT_HEADLINE_COLOR\47] \75 \42#cc6600\42;\n    skin[\47FONT_FACE\47] \75 \42normal normal 99% Verdana, sans-serif\42;\n    google.friendconnect.container.setParentUrl(\42/\42);\n    google.friendconnect.container[\42renderMembersGadget\42](\n    {id: \42div-d3jgwmsf81dm\42,\n     height: 260,\n     \n     \n     \n     site: \04208754581965925578933\42,\n     \n     locale: \47en\47 },\n     skin);\n  \74/script\076'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_TextView', new _WidgetInfo('Text1', 'footer', null, document.getElementById('Text1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'sidebar', null, document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_CustomSearchView', new _WidgetInfo('CustomSearch1', 'sidebar', null, document.getElementById('CustomSearch1'), {'title': 'Search This Blog', 'includeBlog': true, 'includePostLinks': true, 'includeWeb': false, 'linkLists': [], 'blogUrl': 'http://replicaisland.blogspot.com/', 'loadingMsg': 'Loading...', 'thisBlogMsg': 'This Blog', 'linkedFromHereMsg': 'Linked From Here', 'theWebMsg': 'The Web', 'backgroundColor': '#ffffff', 'textColor': '#333333', 'dateColor': '#999999', 'linkColor': '#5588aa', 'urlColor': '#cc6600', 'visitedLinkColor': '#999999', 'borderColor': '#cccccc', 'activeBorderColor': '#cc6600'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList1', 'sidebar', null, document.getElementById('LinkList1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label1', 'sidebar', null, document.getElementById('Label1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar', null, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', null, document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'lightboxEnabled': true, 'lightboxModuleUrl': 'http://www.blogger.com/static/v1/jsbin/3394098854-lbx.js', 'lightboxCssUrl': 'http://www.blogger.com/static/v1/v-css/228702327-lightbox_bundle.css'}, 'displayModeFull'));
+</SCRIPT>
+</BODY></HTML>

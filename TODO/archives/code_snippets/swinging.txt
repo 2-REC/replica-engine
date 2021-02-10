@@ -1,0 +1,189 @@
+
+!!!! TODO: CHECK IF KEEP THIS !!!!
+
+
+SWINGING:
+---------
+
+- SIDE components:
+ - normal swinging
+   => initial speed, gravity, movement slowing down
+ - perpetual swinging
+   => initial speed, gravity, movement reinitialised every time reach lowest point
+
+- TOP components:
+ - non-gravity swinging
+   => initial speed, no gravity, movement slowing down (?)
+=> same as SIDE (when no gravity applied)
+ - perpetual non-gravity swinging
+   => initial speed, no gravity, constant speed (no loss due to angle)
+=> don't modify the velocity intensity (only the direction)
+   (same as SIDE, but not applying "tangentialFactor" to velocity, & setting velocity intensity to same value every step)
+
+- SIDE (& TOP?):
+ - elastic swinging
+...
+
+
+====================================
+
+SideSwinger:
+------------
+
+// NON ELASTIC ROPE:
+
+private Vector2 mRopeVector;
+private Vector2 mVelocityVector;
+private Vector2 mNormalVector;
+private Vector2 mAttachedPoint;
+private Object mFollowedObject; //GameObject?
+
+constructor:
+{
+    mRopeVector = new Vector2();
+    mVelocityVector = new Vector2();
+    mNormalVector = new Vector2();
+    mAttachedPoint = new Vector2();
+    mFollowedObject = null;
+}
+
+
+void update( ... )
+{
+    if ( mFollowedObject != null )
+    {
+        mAttachedPoint = mFollowedObject.position;
+        mVelocityVector = parentObject.velocity;
+
+// !!!! ???? TODO: parentObject OK ? ???? !!!!
+        mRopeVector = parentObject.position - mAttachedPoint;
+
+// MAX_LENGTH given set as parameter when creating object
+// !!!! ???? TODO: ">" or ">=" ? ???? !!!!
+    if ( mRopeVector.Length() > MAX_LENGTH ) //? >= ?
+    {
+        // get normal to rope (tangent to circle, same side as movement)
+        getNormal( mRopeVector, mVelocityVector, mNormalVector );
+
+        // remove lost speed from angle with rope
+        mVelocityVector *= tangentialFactor( mRopeVector, mVelocityVector );
+
+        // set new movement direction
+        mVelocityVector = mNormalVector.Normalized() * mVelocityVector.Length();
+
+        if ( bPerpetual )
+        {
+//OK?
+            // if velocity vector is horizontal ( mNormalVector.y == 0 )
+            //  => set velocity back to maximum value
+            if ( mNormalVector.y == 0 )
+            {
+//?
+                mVelocityVector.x = MAX_VELOCITY * sign( mVelocityVector.x ); // MAX_VELOCITY given set as parameter when creating object
+                //mVelocityVector.y = 0.0f; // already the case
+            }
+        }
+
+        // set new position
+        parentObject.position = mRopeVector.Normalized() * MAX_LENGTH;
+    }
+}
+
+final static float tangentialFactor( Vector2 rope, Vector2 movement )
+{
+    /*
+     f: angle of contact (rope angle): between "rope" & "vertical(0, -1)"
+     a: angle of approach (movement angle): between "movement" & "vertical(0, -1)"
+      => idem as: angle between "rope" & "movement"
+
+     ( f - a ) = acos( dotProduct( rope, movement ) / ( rope.Length() * movement.Length() ) )
+      (should be always between 0-PI => sin >= 0)
+    */
+
+    final float invertAngle = dotProduct( rope, movement ) / ( rope.Length() * movement.Length() );
+    float diffAngle = acos( invertAngle );
+    diffAngle = sin( diffAngle );
+//OR:
+// float diffAngle = sqrt( 1 - ( invertAngle * invertAngle ) );
+
+    return diffAngle;
+}
+
+final static void getNormal( Vector2 line, Vector2 direction, Vector2 normal )
+{
+    // normals: ( -line.y, line.x ) and ( line.y, -line.x )
+    normal.x = -line.y;
+    normal.y = line.x;
+
+    // choose normal on same side as "direction"
+    if ( dotProduct( direction, normal ) <= 0 )
+    {
+        normal.x = line.y;
+        normal.y = -line.x;
+    }
+}
+
+// !!!! TODO: check if doesn't already exist in Vector class !!!!
+final static float dotProduct( Vector2 v1, Vector2 v2 )
+{
+    return ( ( v1.x * v2.x ) + ( v1.y * v2.y ) );
+}
+
+
+----------------------------------------------------------------------------------
+
+-----------------
+
+// NON ELASTIC ROPE:
+// (if no gravity, movement should be perpetual) (?) - NO! (=> force constant velocity if want that)
+
+
+d = position - pendulumPoint;
+if ( d.Length() > maxLength ) //? >= ?
+{
+
+// !!!! ???? TODO: REMOVE THIS TEST ? ???? !!!!
+//=> if keep it, have problem when at bottom & only gravity => start swinging (down force transformed to lateral force)
+// (if remove it, velocity decreases when no gravity...)
+// ? => should have a different function when no gravity ? (=> with constant velocity)
+    if ( !wasGood ) // wasn't "on" the rope previous step
+    {
+        // remove lost speed from angle with rope
+//f: angle of rope (contact angle) ( between d & vertical (0, -1) )
+//a: angle of approach (movement angle) ( between velocity & vertical (0, -1) )
+// ?=> idem as: angle between d & velocity ?
+//(f-a) = acos( dotProduct( d, velocity ) / ( d.Length() * velocity.Length() ) )
+// ( should be always between 0-PI => sin>=0 )
+        invertAngle = dotProduct( d, velocity ) / ( d.Length() * velocity.Length() );
+        diffAngle = acos( invertAngle );
+        velocity = velocity * sin( diffAngle );
+//OR:
+//velocity = velocity * sqrt( 1 - ( invertAngle * invertAngle ) );
+
+        wasGood = true;
+    }
+
+    // get normal (tangent to circle)
+    // normals: ( -d.y, d.x ) and ( d.y, -d.x )
+    normal.x = -d.y;
+    normal.y = d.x;
+    // choose normal on same side as velocity
+    if ( dotProduct( velocity, normal ) <= 0 ) // dotProduct: x1*x2 + y1*y2
+    {
+        normal.x = d.y;
+        normal.y = -d.x;
+    }
+
+    // set new movement direction
+    velocity = normal.Normalized() * velocity.Length();
+//OK?
+// FOR PERPETUAL MOVEMENT:
+// if velocity vector is horizontal (normal.y == 0) => set velocity back to maximum value
+
+    // set new position
+    position = d.Normalized() * maxLength;
+}
+else
+{
+    wasGood = false;
+}

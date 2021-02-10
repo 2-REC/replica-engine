@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  level:
+  Data describing a level.
+
+   - background (M) (1) :
+     Describes the background layer.
+     - resource    (M) : drawable resource (image)
+     - sizeFactorX (O) : width size factor related to screen (float >=1.0) (default: 1.0)
+     - sizeFactorY (O) : height size factor related to screen (float >=1.0) (default: 1.0)
+     - width       (O) : relative desired width (only used for ratio) (integer)
+     - height      (O) : relative desired height (only used for ratio) (integer)
+     - ratio       (O) : if keep ratio, and if keep width or height ("width" | "height") (default: "width", if both "width" & "height" are specified)
+
+   - layerMain (M) (1) :
+     Describes the main layer.
+     - tilesheet         (M) : drawable resource containing the tiles (image)
+     - tileWidth         (M) : width of a tile (integer)
+     - tileHeight        (M) : height of a tile (integer)
+     - resource          (M) : binary data specifying the layer's tiles (BIN file in "raw")
+     - collisionResource (O) : binary data specifying the layer's collision tiles (BIN file in "raw")
+                                If not specified, data from "resource" will be used for collisions.
+     - objectResource    (M) : binary data specifying the layer's objects (BIN file in "raw")
+     - hotspotsResource  (M) : binary data specifying the layer's hotspots (BIN file in "raw")
+
+   - layer (O) (0+) :
+     - tilesheet    (M) : drawable resource containing the tiles (image)
+     - tileWidth    (M) : width of a tile (integer)
+     - tileHeight   (M) : height of a tile (integer)
+     - resource     (M) : binary data specifying the layer's tiles (BIN file in "raw")
+     - foreground   (O) : specifies if the layer is in background or foreground (boolean) (default: false)
+     - sizeFactorX  (O) : width size factor related to the main layer (float) (default: 1.0)
+     - sizeFactorY  (O) : height size factor related to the main layer (float) (default: 1.0)
+     - movingSpeedX (O) : horizontal speed at which the layer moves when idle (float) (default: 0.0)
+     - movingSpeedY (O) : vertical speed at which the layer moves when idle (float) (default: 0.0)
+
+   - dialogs (O) :
+     - resource (M) : dialogs resource file for the level (XML dialog file in "xml")
+
+
+  Example:
+
+  <level>
+    <background
+      resource="@drawable/background_level_x"
+      sizeFactorX="1.0"
+      sizeFactorY="2.0"
+      width="512"
+      height="512"
+      ratio="width"
+    />
+    <layerMain
+      tilesheet="@drawable/level_x_tilemap"
+      tileWidth="32"
+      tileHeight="32"
+      resource="@raw/level_x_bkg"
+      collisionResource="@raw/level_x_collisions"
+      objectsResource="@raw/level_x_objects"
+      hotspotsResource="@raw/level_x_hotspots"
+    />
+    <layer
+      tilesheet="@drawable/level_x_bkg_layer"
+      tileWidth="32"
+      tileHeight="32"
+      resource="@raw/level_x_bkg_layer"
+    />
+    <layer
+      tilesheet="@drawable/level_x_fore_layer"
+      tileWidth="32"
+      tileHeight="32"
+      resource="@raw/level_x_fore_layer"
+      foreground="true"
+    />
+    <dialogs
+      resource="@xml/dialogs_level_x"
+    />
+  </level>
+
+-->

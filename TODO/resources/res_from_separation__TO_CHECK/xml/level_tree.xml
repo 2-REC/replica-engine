@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  levelTree:
+  Data specifying the levels tree structure (divided in groups).
+
+   - group (M) (1+) :
+     Holds 1 or more levels.
+
+     - level (M) (1+) :
+       Data describing a level.
+       - resource     (M) : level description file (XML file resource)
+       - music        (O) : level background music (sound resource) (default: none)
+       - title        (M) : name of the level (string resource)
+       - number       (M) : "number" of the level, used for ordering (string resource)
+       - intro        (O) : intro animation played before level (anim resource) (default: none)
+       - outro        (O) : outro animation played after level (anim resource) (default: none)
+       - resultScreen (O) : results screen resource file (image or animation)
+       - restartable  (O) : specifies if level can be restarted when die (boolean) (default: true)
+       - skippable    (O) : specifies if level can be skipped when die (boolean) (default: true)
+       - selectable   (O) : specifies if level is selectable on the level map, & specifies data id in "map.xml" (integer) (default: 0)
+                             >0 => selectable & visible even if disabled
+                             =0 => not selectable
+                             <0 => selectable but not visible if disabled
+       - waitmessage  (O) : specifies if need to show the wait message (passive level) (boolean) (default: false)
+
+  Example:
+
+  <levelTree>
+    <group>
+      <level
+        resource="@xml/level_x"
+        music="@raw/music_x"
+        title="@string/level_x"
+        number="@string/level_x_number"
+        intro="@xml/anim_x"
+        outro="@xml/anim_xx"
+        resultScreen="@drawable/level_x_result_screen"
+        restartable="false"
+        skippable="true"
+        selectable="1"
+      />
+    </group>
+  </levelTree>
+
+-->

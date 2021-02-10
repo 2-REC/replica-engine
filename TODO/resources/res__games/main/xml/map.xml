@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map>
+<!-- Map description -->
+<!-- Must at least have "background", "layerMain", some "level" and "levelDefault". -->
+
+    <background
+        resource="@drawable/map_background"
+    />
+    <layerMain
+        resource="@drawable/map_main"
+        levelWidth="0.05"
+        selectedLevelWidth="0.05"
+        zoomInit="2.0"
+        zoomMin="1.0"
+        zoomMax="8.0"
+    />
+    <layer
+        resource="@anim/map_background"
+        zoomFactor="0.5"
+        foreground="false"
+        fitScreen="true"
+    />
+    <layer
+        resource="@drawable/map_layer_1"
+        zoomFactor="2.0"
+        foreground="true"
+        fitScreen="false"
+        alpha="0.5"
+    />
+    <levelDefault
+        background="@drawable/level_default_bkg"
+        foreground="@drawable/level_default_fore"
+        description="@string/level_default_description"
+    />
+    <level
+        id="1"
+        x="0.5"
+        y="0.25"
+        background="@drawable/level_1_bkg"
+        foreground="@drawable/level_1_fore"
+        description="@string/level_1_description"
+    />
+    <level
+        id="2"
+        x="0.25"
+        y="0.75"
+        background="@drawable/level_2_bkg"
+        foreground="@drawable/level_2_fore"
+        description="@string/level_2_description"
+    />
+
+</map>

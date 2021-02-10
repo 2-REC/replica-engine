@@ -1,0 +1,44 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:replica="http://schemas.android.com/apk/res-auto"
+    >
+
+    <PreferenceCategory
+        android:title="@string/preference_audio"
+        >
+
+        <CheckBoxPreference
+            android:key="disableAudio"
+            android:title="@string/preference_audio_disable"
+            android:summaryOn="@string/preference_audio_disable_summary"
+            android:summaryOff="@string/preference_audio_disable_summary"
+            android:defaultValue="false"
+            android:persistent="true"
+            android:disableDependentsState="true"
+        />
+
+        <com.replica.engine.SoundSliderPreference
+            android:key="soundVolume"
+            android:defaultValue="100"
+            android:title="@string/preference_sound_volume"
+            android:summary="@string/preference_sound_volume_summary"
+            replica:maxText="@string/preference_sound_volume_max"
+            replica:minText="@string/preference_sound_volume_min"
+            android:persistent="true"
+            android:dependency="disableAudio"
+        />
+
+        <com.replica.engine.MusicSliderPreference
+            android:key="musicVolume"
+            android:defaultValue="100"
+            android:title="@string/preference_music_volume"
+            android:summary="@string/preference_music_volume_summary"
+            replica:maxText="@string/preference_music_volume_max"
+            replica:minText="@string/preference_music_volume_min"
+            android:persistent="true"
+            android:dependency="disableAudio"
+        />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

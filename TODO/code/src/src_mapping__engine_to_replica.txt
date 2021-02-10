@@ -1,0 +1,686 @@
+
+ENGINE - SAME:
+(73 files)
+
+AABoxCollisionVolume.java
+AllocationGuard.java
+AnimationFrame.java
+AttackAtDistanceComponent.java
+BackgroundCollisionComponent.java
+BufferLibrary.java
+ButtonAnimationComponent.java
+CameraBiasComponent.java
+ChangeComponentsComponent.java
+ChannelSystem.java
+CollisionVolume.java
+ContextParameters.java
+DebugLog.java
+DoorAnimationComponent.java
+DrawableFactory.java
+DrawableObject.java
+DynamicCollisionComponent.java
+EnemyAnimationComponent.java
+FadeDrawableComponent.java
+FixedAnimationComponent.java
+FixedSizeArray.java
+FrameRateWatcherComponent.java
+GameComponent.java
+GameComponentPool.java
+GameObjectCollisionSystem.java
+GameObjectManager.java
+GenericAnimationComponent.java
+GLSurfaceView.java
+Grid.java
+HitPlayerComponent.java
+HitPoint.java
+HitPointPool.java
+InputButton.java
+InputKeyboard.java
+InputTouchScreen.java
+InputXY.java
+Interpolator.java
+Lerp.java
+MainLoop.java
+MotionBlurComponent.java
+MovementComponent.java
+NPCAnimationComponent.java
+ObjectPool.java
+ObjectRegistry.java
+OpenGLSystem.java
+PatrolComponent.java
+PhasedObject.java
+PhasedObjectManager.java
+PlaySingleSoundComponent.java
+PopOutComponent.java
+RenderComponent.java
+RenderSystem.java
+ScrollableBitmap.java
+ScrollerComponent.java
+SimpleCollisionComponent.java
+SimplePhysicsComponent.java
+SleeperComponent.java
+SolidSurfaceComponent.java
+Sorter.java
+SphereCollisionVolume.java
+SpriteAnimation.java
+SpriteComponent.java
+StandardSorter.java
+Texture.java
+TextureLibrary.java
+TiledBackgroundVertexGrid.java
+TiledWorld.java
+TObjectPool.java
+UIConstants.java
+Utils.java
+VectorPool.java
+VibrationSystem.java
+YesNoDialogPreference.java
+
+--------------------------------------------------------------------------------
+
+ENGINE - DIFF:
+(49 files)
+
+AnimationComponent.java
+	=> made more generic
+	=> lots of changes
+		TODO
+
+AnimationPlayerActivity.java
+	=> made more generic
+	=> lots of changes
+		TODO
+
+BaseObject.java
+	=> minor changes: changed sSystemRegistry visibility to "public" (to be accessible from "game")
+
+CameraSystem.java
+	=> minor changes: functions set to "public" visibility
+	=> "setTarget" & "shake" as public methods
+	(& removed 1 call to "systemRegistry.contextParameters.ggameHeight")
+
+CollisionParameters.java
+	=> added new collision types (DIALOG, PLATFORM)
+
+CollisionSystem.java
+	=> allow to have arbitrary sized tiles (instead of 32x32), plus minor changes.
+
+ConversationUtils.java
+	=> adapted dialog stuff
+		TODO
+?	=> added "id" field to conversations
+		(+small optimisation with "else if")
+
+CustomToastSystem.java
+	=> minor changes: using "UtilsResources"
+
+DebugSystem.java
+	=> minor changes: using "UtilsResources"
+
+DifficultyConstants.java
+	=> made more generic
+
+DifficultyMenuActivity.java
+	=> added music support (+small changes)
+	=> some refactoring, and use of generic stuff
+		TODO
+
+DrawableBitmap.java
+	=> minor changes: addition of "mUseCrop" variable
+	line 46 => shouldn't be "0" as 2nd parameter for "setCrop" call in constructor?
+	=> added "setUseCrop" method (+field)
+		(& set constructor as public)
+
+EventRecorder.java
+	=> made more generic
+		TODO
+
+Game.java
+	=> made more generic
+	=> lots of changes
+		TODO
+
+GameFlowEvent.java
+	=> added new event types
+
+GameObject.java
+	=> added "strength stuff, and "WIN" ActionType
+		TODO
+
+GameObjectFactory.java
+	=> lots of changes, made generic
+		TODO
+
+GameRenderer.java
+	=> minor changes: removed "hackBrokenDevices" stuff (commented)
+
+GameThread.java
+	=> minor changes: removed "setFPS" stuff (commented)
+
+GravityComponent.java
+	=> minor changes: added methods to set & get the gravity value and direction
+
+HitReactionComponent.java
+	=> lots of changes
+		TODO
+
+HotSpotSystem.java
+	=> added more HotSpot types
+		TODO
+
+HudSystem.java
+	=> made more generic
+	=> lots of changes
+		TODO
+
+InputGameInterface.java
+	=> removed most stuff (to derived class)
+	=> made generic (abstract)
+	=> lots of changes
+		TODO
+
+InputSystem.java
+	=> made generic (abstract)
+	=> lots of changes
+		TODO
+	=> emptied everything ...
+	=> WHY???? OK???? (look at derived classes)
+
+InventoryComponent.java
+	=> "UpdateRecord" is abstract
+	=> made generic
+		TODO
+
+LauncherComponent.java
+	=> minor changes: removed use of "GameObjectFactory" type (use of int instead)
+
+LaunchProjectileComponent.java
+	=> changes to allow derivation
+	=> made more generic
+		TODO
+
+LevelBuilder.java
+	=> changed level stuff (& different xml format)
+	=> made more generic
+		TODO
+
+LevelSelectActivity.java
+	=> changed from "list" to "map"
+	=> made generic (abstract)
+	=> lots of changes
+		TODO
+
+LevelSystem.java
+	=> changed level stuff (& different xml format)
+	=> made more generic
+	=> lots of changes
+		TODO
+
+LevelTree.java
+	=> changed XML stuff
+	=> lots of changes
+		TODO
+
+LifetimeComponent.java
+	=> allow multiple objects to spawn
+	=> lots of changes
+		TODO
+	=> adapted with "int" for objects types
+	=> commented ghost stuff
+
+Main.java
+	=> renamed from "AndouKun.java"
+	=> made more generic
+	=> lots of changes
+		TODO
+
+MainMenuActivity.java
+	=> made more generic
+	=> lots of changes
+		TODO
+
+NPCComponent.java
+	=> changes to dialog stuff
+		TODO
+
+ObjectManager.java
+	=> Time scale stuff (commented though)
+	=> minor/no changes
+	=> speed up things, but commented
+		TODO
+
+PhysicsComponent.java
+	=> minor changes: change constructor visibility to public (to be used outside of engine package)
+
+PlayerComponent.java
+	=> made generic (abstract)
+	=> lots of changes
+		TODO
+
+PreferenceConstants.java
+	=> more generic
+	=> adapted constants
+		TODO
+
+ResultsActivity.java
+	=> renamed from "GameOverActivity.java"
+	=> made more generic
+		TODO
+
+SelectDialogComponent.java
+	=> changed dialog HotSpot management
+	=> minor changes: dialog selection
+		TODO
+	=> HitType COLLECT or DIALOG ????
+
+SetPreferencesActivity.java
+	=> adaptred to fragments
+	=> made generic (abstract)
+	=> lots of changes
+		TODO
+
+SliderPreference.java
+	=> adapted to engine
+	=> keypad handling
+		TODO
+	=> added key handling (LEFT-RIGHT) to change value
+	=> load resources using "UtilsResources"
+
+SortConstants.java
+	=> added some constants (& renamed "FOREGROUND" to "MAIN")
+	=> minor changes: modified names and values
+
+SoundSystem.java
+	=> minor changes: added sound volume support
+
+TiledVertexGrid.java
+	=> added size factor handling
+	=> changed fields visibility for derived classes
+		TODO
+
+TimeSystem.java
+	=> minor changes: added "extendScale" method
+		TODO
+	?=> change name of "appyScale" to "applyScale"
+
+Vector2.java
+	=> minor changes: added methods to limit vector' length ("limitMin" & "limitMax")
+
+
+--------------------------------------------------------------------------------
+
+!!!! TODO !!!!
+
+ENGINE - NEW:
+(47 files)
+
+AnimationComponentSide.java
+	=> specialised "side" animation component.
+	=> TO CHECK!!!!
+	=> TO FINISH!!!!
+
+AnimationComponentTop.java
+	=> specialised "top" animation component.
+	=> TO CHECK!!!!
+	=> TO FINISH!!!!
+
+BallPhysicsComponent.java
+	=> simple ball physics (modified from "SimplePhysicsComponent").
+	=> TO CHECK!!!!
+
+DebugChecks.java
+	=> TO REMOVE!!!!
+
+EndingActivity.java
+	=> Specific OUYA hack activity.
+ To solve problem of activities being killed when left.
+
+
+FollowBetweenComponent.java
+FollowBetweenFixedComponent.java
+FollowCameraComponent.java
+FollowComponent.java
+FollowPlayerComponent.java
+	=> following components
+	=> see how much can be common (& derived from common base class)
+	=> TO CHECK!!!!
+
+ForceComponent.java
+	=> add a constant force to an object (abstract)
+
+ForceComponentSide.java
+	=> add a constant horizontal force to an object
+
+ForceComponentTop.java
+	=> add a constant force to an object
+
+GravityComponentTop.java
+	=> specialised "top" gravity component.
+	=> ("side" specific in "GravityComponent.java")
+	=> TO CHECK!!!!
+
+HitCounterComponent.java
+	=> Component to count the number of hits of a particular type & then to do something when reach a target.
+
+HitReactionComponentMultiple.java
+	=> multiple hit reaction component (can have 1 hit reaction per object type)
+	=> TO CHECK!!!!
+
+HitReactionComponentSingle.java
+	=> single hit reaction component (only 1 hit reaction)
+	=> TO CHECK!!!!
+
+HudBar.java
+HudButton.java
+HudButtonSlider.java
+HudCounter.java
+HudDigits.java
+HudElement.java
+HudIcon.java
+HudIconCounter.java
+	=> HUD elements
+	=> TO CHECK!!!! (& document)
+
+InputInterfaceButton.java
+	=> specific interface button
+	=> TO CHECK!!!! (& document)
+
+InputInterfaceSlider.java
+	=> specific interface slider
+	=> TO CHECK!!!! (& document)
+
+LaunchChainComponent.java
+	=> "LaunchProjectileComponent.java" adapted to chain.
+	=> TO CHECK!!!!
+
+MusicManager.java
+	=> manages music at global level (between activities)
+	=> TO CHECK!!!!
+	=> TO FINISH!!!!
+
+MusicSliderPreference.java
+	=> preference slider handling music volume
+
+PatrolComponentTop.java
+	=> specialised "top" patrol component
+	=> ("side" specific in "PatrolComponent.java")
+	=> TODO: this & "PatrolComponent.java" should be derived from a common abstract class (& renamed to "PatrolComponentSide.java")
+	=> TO CHECK!!!!
+
+PhysicsComponentTop.java
+	=> specialised "top" physics component.
+	=> ("side" specific in "PhysicsComponent.java")
+	=> TO CHECK!!!!
+
+PlatformComponent.java
+	=> new component to handle moving platforms.
+
+PlayerComponentSide.java
+	=> specialised "top" player component.
+	=> TO CHECK!!!!
+	=> TO FINISH!!!!
+
+PlayerComponentTop.java
+	=> specialised "top" player component.
+	=> TO CHECK!!!!
+	=> TO FINISH!!!!
+
+PreferencesFragmentAudio.java
+	=> preferences activity as fragment
+
+PreferencesFragmentGeneral.java
+	=> preferences activity as fragment
+
+SoundManager.java
+	=> manages sounds at global levvel
+	=> TO CHECK!!!!
+	=> TO FINISH!!!!
+
+SoundSliderPreference.java
+	=> preference slider handling sound volume
+
+StartupActivity.java
+	=> Specific OUYA hack activity.
+ To solve problem of activities being killed when left.
+
+		(+resources loading)
+
+SwingerComponent.java
+	=> rope swinging component.
+	=> TO CHECK!!!!
+
+SwingerFixedComponent.java
+	=> fixed point rope swinging component.
+	=> should derive from "SwingerComponent.java" (or from a common class).
+	=> TO CHECK!!!!
+
+TakeControlComponent.java
+	=> component to take control of another object (or vice versa?).
+	=> TO CHECK!!!!
+
+TiledVertexGridPatch.java
+	=> handles moving grid patch.
+	=> TO CHECK!!!!
+	=> TO FINISH!!!! (remove duplicate stuff with "TiledVertexGrid.java"
+
+TypewriterTextView.java
+	=> extractred from "ConversationDialogActivity".
+
+UtilsActivities.java
+	=> Activity transition utility method (extracted from other files).
+
+UtilsResources.java
+	=> new utility methods.
+
+
+--------------------------------------------------------------------------------
+
+!!!! TODO: adapt (other way round) !!!!
+GAME?
+
+ENGINE - REMOVED/REPLACED:
+(8 files)
+
+ConversationDialogActivity.java
+	=> removed, now in "Main.java" in "engine" (no more in separate activity)
+MultiTouchFilter.java
+	=> removed, now in "TouchFilter" in "engine/phone"
+SingleTouchFilter.java
+	=> removed
+
+--------------------------------------------------------------------------------
+
+ENGINEPHONE - DIFF:
+(1 file)
+
+TouchFilter.java
+	=> merged with "MultiTouchFilter.java"
+
+--------------------------------------------------------------------------------
+
+!!!! TODO !!!!
+
+ENGINEPHONE - NEW:
+
+AnimationPlayerActivityImpl.java
+TODO	Handling buttons to end animation.
+	-> currently useless (commented code)
+	=> check working status, & if this file is needed
+	=> difference Phone/Ouya: touch & keys stuff
+
+DifficultyMenuActivityImpl.java
+	=> difference Phone/Ouya: specific buttons (BACK button to go back on Phone, A on OUYA)
+	Handling buttons to go back (leave activity).
+
+GameSpecific.java
+	System specific controls & interactions (vibrations, touch, orientation, etc.).
+	=> difference Phone/Ouya: specific controls & preferences
+
+InputInterfaceButtonImpl.java
+	Interface button stuff (obviously different than for Ouya).
+
+InputInterfaceDPadImpl.java
+TODO	Specific DPAD for phone.
+
+InputInterfaceSliderImpl.java
+	Interface slider stuff (obviously different than for Ouya).
+
+InputSystemImpl.java
+	Input management stuff (obviously different than for Ouya).
+	=> difference Phone/Ouya: Phone buttons & orientation sensor management, Ouya ....
+
+LevelSelectActivityImpl.java
+	Specific phone controls management (empty).
+	=> difference Phone/Ouya: Phone is empty, Ouya handles the pan/zoom with gamepad
+	=> should remove?
+
+MainMenuActivityImpl.java
+	Specific controls & inputs preferences (obviously differrent than for Ouya).
+	=> difference Phone/Ouya: controls specific stuff ... needed? specific?
+
+MainSpecific.java
+	Input & controls specific stuff (and sensor stuff).
+	=> difference Phone/Ouya: specific preferences & buttons management
+
+ResultsActivitySpecific.java
+	Specific buttons handling.
+
+SetPreferencesActivitySpecific.java
+	Specific buttons handling.
+	=> difference Phone/Ouya: specific buttons (BACK button to go back on Phone, A on OUYA)
+
+
+--------------------------------------------------------------------------------
+
+!!!! TODO !!!!
+
+ENGINEOUYA - NEW:
+
+AnimationPlayerActivityImpl.java
+TODO	Handling buttons to end animation.
+	-> currently useless (commented code)
+	=> check working status, & if this file is needed
+
+ButtonDialogPreference.java
+TODO	Button configuration dialog.
+
+Controls.java
+TODO	Specific Ouya controls stuff.
+
+ControlsActivity.java
+TODO	Specific Ouya controls preference screen.
+
+DifficultyMenuActivityImpl.java
+	Handling buttons to go back (leave activity).
+	=> OUYA specific (button A to go back).
+
+GameSpecific.java
+	System specific controls & interactions (buttons, etc.).
+
+InputGameInterfaceOuya.java
+TODO	Specific Ouya controls stuff.
+	=> Input implementation for OUYA.
+	(no equivalent in "EnginePhone")
+
+InputInterfaceButtonImpl.java
+	Interface button stuff (obviously different than for phone).
+
+InputInterfaceSliderImpl.java
+	Interface slider stuff (obviously different than for phone).
+	=> OUYA buttons management.
+
+InputSystemImpl.java
+	Input management stuff (obviously different than for phone).
+
+LevelSelectActivityImpl.java
+	Specific Ouya controls management (for pan & zoom).
+
+MainMenuActivityImpl.java
+	Specific controls & inputs preferences (obviously differrent than for phone).
+
+MainSpecific.java
+	Input & controls specific stuff.
+
+PreferenceConstantsOuya.java
+	Specific Ouya buttons, used in "MainSpecific".
+
+ResultsActivitySpecific.java
+	Specific buttons handling.
+
+SetPreferencesActivitySpecific.java
+	Specific buttons handling.
+
+
+--------------------------------------------------------------------------------
+
+!!!! TODO !!!!
+
+GAME - NEW:
+
+AnimationComponentSideImpl.java
+
+AnimationComponentTopImpl.java
+
+DifficultyConstantsSpecific.java
+	=> replaces "BabyDifficultyConstants.java", "KidsDifficultyConstants.java" and "AdultsDifficultyConstants.java"
+
+EventRecorderImpl.java
+
+GameImpl.java
+
+GameObjectFactoryImpl.java
+
+MainImpl.java
+
+PlayerComponentSideImpl.java
+
+PlayerComponentSideVehicle.java
+
+PlayerComponentTopClimber.java
+
+PlayerComponentTopImpl.java
+
+PreferenceConstantsSpecific.java
+
+ResultsGameOverActivityImpl.java
+
+ResultsLevelActivityImpl.java
+
+SetPreferencesActivityImpl.java
+
+UpdateRecordHudImpl.java
+
+UpdateRecordImpl.java
+
+
+--------------------------------------------------------------------------------
+
+!!!! TODO !!!!
+
+GAMEPHONE - NEW:
+
+ButtonConstants.java
+	=> removed, now in "HudSystemImpl.java" in "game"
+
+GameImplSpecific.java
+
+HudSystemImpl.java
+
+InputGameInterfaceImpl.java
+
+MainMenuActivityImplSpecific.java
+
+PreferencesFragmentControls.java
+
+
+--------------------------------------------------------------------------------
+
+!!!! TODO !!!!
+
+GAMEOUYA - NEW:
+
+GameImplSpecific.java
+HudSystemImpl.java
+InputGameInterfaceImpl.java
+MainMenuActivityImplSpecific.java
+PreferencesFragmentControls.java

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<hud>
+
+  <!--
+    Digits:
+      Digits definition.
+  -->
+
+  <digits
+    absolute="true"
+    width="0.0"
+    height="0.1"
+    drawable_0="ui_0"
+    drawable_1="ui_1"
+    drawable_2="ui_2"
+    drawable_3="ui_3"
+    drawable_4="ui_4"
+    drawable_5="ui_5"
+    drawable_6="ui_6"
+    drawable_7="ui_7"
+    drawable_8="ui_8"
+    drawable_9="ui_9"
+  />
+
+
+  <!--
+    Elements:
+      List of hud elements.
+      Must be after the digits definitions.
+
+      Common to all elements:
+      - index             (M) : unique identifier - must correspond to order defined in HudSystem!
+      - type              (M) : one of the following defined types:
+                                 - 0 : HudBar
+                                 - 1 : HudButton
+                                 - 2 : HudButtonSlider
+                                 - 3 : HudIcon
+                                 - 4 : HudIconCounter
+                                 - 5 : HudCounter
+      - absolute          (O) : (default: true)
+?      - x                 (M) :
+      - x_origin          (O) : (default: CENTER)
+      - x_alignment       (O) : (default: CENTER)
+?      - y                 (M) :
+      - y_origin          (O) : (default: CENTER)
+      - y_alignment       (O) : (default: CENTER)
+?      - width             (M) :
+?      - height            (M) :
+      - padding           (O) : (float) (default: 0.0f)
+      Common to all but "HudCounter":
+      - drawable          (M) :
+      Specific to "HudBar":
+      - speed_decrease    (O) : (float) (default: 0.0f)
+      - speed_increase    (O) : (float) (default: 0.0f)
+      Specific to "HudButtonSlider":
+?      - width_base        (M) : (float) (default: 0.0f)
+?      - height_base       (M) : (float) (default: 0.0f)
+      Specific to "HudButton":
+      - drawable_pressed  (M) :
+      - drawable_disabled (M) :
+      Specific to "HudCounter" & "HudIconCounter":
+      - nb_digits         (O) : (int) (default: 1)
+      - show_zeroes       (O) : (boolean) (default: false)
+      Specific to "HudBar" & "HudIconCounter"
+      - padding_inside    (O) : (float) (default: 0.0f)
+      Specific to "HudBar" & "HudButtonSlider":
+      - drawable_base     (M) :
+
+  -->
+
+  <elements>
+
+    <element
+      index="0"
+      type="0"
+      absolute="true"
+      x="0.02"
+      x_origin="LEFT"
+      x_alignment="LEFT"
+      y="0.02"
+      y_origin="TOP"
+      y_alignment="TOP"
+      width="1.4"
+      height="0.2"
+      padding="0.0"
+      padding_inside="0.02"
+      speed_decrease="0.75"
+      speed_increase="2.0"
+      drawable="ui_lifebar"
+      drawable_background="ui_lifebar_background"
+    />
+
+    <element
+      index="1"
+      type="4"
+      absolute="true"
+      x="0.8"
+      x_origin="RIGHT"
+      x_alignment="RIGHT"
+      y="-0.02"
+      y_origin="TOP"
+      y_alignment="TOP"
+      width="0.0"
+      height="0.2"
+      padding="0.0"
+      padding_inside="0.04"
+      nb_digits="2"
+      show_zeroes="false"
+      drawable="ui_lives"
+    />
+
+    <element
+      index="2"
+      type="4"
+      absolute="true"
+      x="-0.02"
+      x_origin="RIGHT"
+      x_alignment="RIGHT"
+      y="-0.02"
+      y_origin="TOP"
+      y_alignment="TOP"
+      width="0.0"
+      height="0.2"
+      padding="0.0"
+      padding_inside="0.04"
+      nb_digits="2"
+      show_zeroes="true"
+      drawable="ui_points"
+    />
+
+    <!-- !!!! TODO: add chilli bonus stuff !!!! -->
+    <!-- !!!! TODO: add tequila bonus stuff !!!! -->
+
+    <!-- //////// SYSTEM_SPECIFIC - BEGIN -->
+
+    <!-- !!!! TODO: slider used for sensor movement, could be removed !!!!
+         !!!! TODO: doesn't matter as control is always hidden !!!!
+    -->
+    <element
+      index="3"
+      type="2"
+      absolute="true"
+      x="0.02"
+      x_origin="LEFT"
+      x_alignment="LEFT"
+      y="0.02"
+      y_origin="BOTTOM"
+      y_alignment="BOTTOM"
+      width_base="1.0"
+      height_base="0.2"
+      width="0.2"
+      height="0.0"
+      padding="0.0"
+      drawable="ui_dpad_off"
+      drawable_pressed="ui_dpad_on"
+      drawable_disabled="ui_dpad_disabled"
+      drawable_base="ui_dpad_base"
+    />
+
+    <element
+      index="4"
+      type="1"
+      absolute="false"
+      x="0.01"
+      x_origin="LEFT"
+      x_alignment="LEFT"
+      y="0.01"
+      y_origin="BOTTOM"
+      y_alignment="BOTTOM"
+      width="0.1"
+      height="0.0"
+      padding="0.0"
+      drawable="ui_button_left_off"
+      drawable_pressed="ui_button_left_on"
+      drawable_disabled="ui_button_left_disabled"
+    />
+
+    <element
+      index="5"
+      type="1"
+      absolute="false"
+      x="0.2"
+      x_origin="LEFT"
+      x_alignment="LEFT"
+      y="0.01"
+      y_origin="BOTTOM"
+      y_alignment="BOTTOM"
+      width="0.1"
+      height="0.0"
+      padding="0.0"
+      drawable="ui_button_right_off"
+      drawable_pressed="ui_button_right_on"
+      drawable_disabled="ui_button_right_disabled"
+    />
+
+    <!-- //////// CLIMBING 20141024 - MID -->
+    <element
+      index="6"
+      type="1"
+      absolute="false"
+      x="0.3"
+      x_origin="LEFT"
+      x_alignment="LEFT"
+      y="0.01"
+      y_origin="BOTTOM"
+      y_alignment="BOTTOM"
+      width="0.1"
+      height="0.0"
+      padding="0.0"
+      drawable="ui_button_up_off"
+      drawable_pressed="ui_button_up_on"
+      drawable_disabled="ui_button_up_disabled"
+    />
+
+    <element
+      index="7"
+      type="1"
+      absolute="false"
+      x="0.4"
+      x_origin="LEFT"
+      x_alignment="LEFT"
+      y="0.01"
+      y_origin="BOTTOM"
+      y_alignment="BOTTOM"
+      width="0.1"
+      height="0.0"
+      padding="0.0"
+      drawable="ui_button_down_off"
+      drawable_pressed="ui_button_down_on"
+      drawable_disabled="ui_button_down_disabled"
+    />
+
+    <!-- //////// CLIMBING 20141024 - END -->
+
+    <element
+      index="8"
+      type="1"
+      absolute="false"
+      x="0.01"
+      x_origin="RIGHT"
+      x_alignment="RIGHT"
+      y="0.01"
+      y_origin="BOTTOM"
+      y_alignment="BOTTOM"
+      width="0.1"
+      height="0.0"
+      padding="0.0"
+      drawable="ui_button_jump_off"
+      drawable_pressed="ui_button_jump_on"
+      drawable_disabled="ui_button_jump_disabled"
+    />
+
+    <element
+      index="9"
+      type="1"
+      absolute="false"
+      x="0.01"
+      x_origin="RIGHT"
+      x_alignment="RIGHT"
+      y="0.2"
+      y_origin="BOTTOM"
+      y_alignment="BOTTOM"
+      width="0.1"
+      height="0.0"
+      padding="0.0"
+      drawable="ui_button_attack_off"
+      drawable_pressed="ui_button_attack_on"
+      drawable_disabled="ui_button_attack_disabled"
+    />
+
+    <!-- //////// SYSTEM_SPECIFIC - END -->
+
+  </elements>
+
+
+  <!--
+    Layouts:
+      List of element IDs used in the layout.
+      Must be after the elements definitions.
+  -->
+
+  <layouts>
+    <layout id="0" >
+      <element id="0" />
+      <element id="1" />
+      <element id="2" />
+      <element id="4" />
+      <element id="5" />
+      <element id="6" />
+      <element id="7" />
+      <element id="8" />
+      <element id="9" />
+    </layout>
+    <layout id="1" >
+      <element id="0" />
+      <element id="1" />
+      <element id="2" />
+      <element id="3" hidden="true" />
+      <element id="8" />
+      <element id="9" />
+    </layout>
+  </layouts>
+
+</hud>

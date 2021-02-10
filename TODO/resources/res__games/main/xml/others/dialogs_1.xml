@@ -1,0 +1,41 @@
+<!-- need that ?
+<?xml version="1.0" encoding="utf-8"?>
+-->
+<dialog>
+<!--
+    <conversation id="0" >
+        <page
+            image="@drawable/dlg_hero_closeup_normal"
+            text="@string/hero_1"
+            title="@string/hero"
+        />
+        <page
+            image="@drawable/dlg_kyle_closeup_neutral"
+            text="@string/kyle_1"
+            title="@string/kyle"
+        />
+        <page
+            image="@drawable/dlg_hero_closeup_normal"
+            text="@string/hero_2"
+            title="@string/hero"
+        />
+    </conversation>
+    <conversation id="1" >
+        <page
+            image="@drawable/dlg_hero_closeup_normal"
+            text="@string/hero_3"
+            title="@string/hero"
+        />
+        <page
+            image="@drawable/dlg_kyle_closeup_neutral"
+            text="@string/kyle_2"
+            title="@string/kyle"
+        />
+        <page
+            image="@drawable/dlg_kyle_closeup_angry"
+            text="@string/kyle_3"
+            title="@string/kyle"
+        />
+    </conversation>
+-->
+</dialog>
